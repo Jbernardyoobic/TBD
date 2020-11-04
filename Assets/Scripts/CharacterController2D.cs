@@ -51,7 +51,7 @@ public class CharacterController2D : MonoBehaviour {
         } else if ((move < 0 && m_FacingRight)) {
             Flip();
         }
-        Debug.Log(m_Grounded);
+
         if (m_Grounded && jump) {
             // Add a vertical force to the player.
             m_Grounded = false;
