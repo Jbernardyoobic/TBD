@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         playerDirection = Input.GetAxisRaw("Horizontal") * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetButtonDown("Jump")) {
             jump = true;
         }
     }
