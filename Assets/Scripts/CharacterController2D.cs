@@ -9,12 +9,21 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private float fallMultiplier;
     [SerializeField] private float lowFallMultiplier;
+    [SerializeField] private float wallCheckPos;
+    [SerializeField] private Vector2 wallCheckSize;
+    [SerializeField] private float m_WallJumpForce;
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;            // Whether or not the player is grounded.
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
+
+    private bool isTouchingWallRight;
+    private bool isTouchingWallLeft;
+    private int isTouchingLeftOrRight;
+    private bool canWallJump;
+
 
 
     [System.Serializable]
@@ -36,6 +45,27 @@ public class CharacterController2D : MonoBehaviour {
                 m_Grounded = true;
             }
         }
+
+        isTouchingWallRight = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x + wallCheckPos, gameObject.transform.position.y), wallCheckSize, 0f, m_WhatIsGround);
+        isTouchingWallLeft = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x - wallCheckPos, gameObject.transform.position.y), wallCheckSize, 0f, m_WhatIsGround);
+
+        if (isTouchingWallLeft) {
+            isTouchingLeftOrRight = 1;
+        } else if (isTouchingWallRight) {
+            isTouchingLeftOrRight = -1;
+        }
+
+        if ((isTouchingWallLeft || isTouchingWallRight) && !m_Grounded) {
+            canWallJump = true;
+        } else {
+            canWallJump = false;
+        }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(new Vector2(gameObject.transform.position.x + wallCheckPos, gameObject.transform.position.y), wallCheckSize);
+        Gizmos.DrawCube(new Vector2(gameObject.transform.position.x - wallCheckPos, gameObject.transform.position.y), wallCheckSize);
     }
 
     public void Move(float move, bool jump) {
@@ -55,7 +85,12 @@ public class CharacterController2D : MonoBehaviour {
         if (m_Grounded && jump) {
             // Add a vertical force to the player.
             m_Grounded = false;
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            // m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            m_Rigidbody2D.velocity = new Vector2(0f, m_JumpForce);
+        }
+
+        if (!m_Grounded && jump && canWallJump) {
+            m_Rigidbody2D.velocity = new Vector2(isTouchingLeftOrRight * 10f, m_WallJumpForce);
         }
 
         //Accelerate the fall of the player to get a better jump feeling
