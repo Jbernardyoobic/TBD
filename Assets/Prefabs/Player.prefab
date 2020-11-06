@@ -196,7 +196,7 @@ MonoBehaviour:
   - {x: -0.25367832, y: -0.18748641, z: 0}
   m_ShapePathHash: -195200123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 20320
+  m_InstanceId: 21700
 --- !u!114 &9140867600583730069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  m_GroundCheck: {fileID: 0}
+  m_GroundCheck: {fileID: 9140867600476722280}
   fallMultiplier: 4
   lowFallMultiplier: 4
   wallCheckPos: 0.32
@@ -233,4 +233,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller2D: {fileID: 9140867600583730069}
-  speed: 60
+  speed: 35
