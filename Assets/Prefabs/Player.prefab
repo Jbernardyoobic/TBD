@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9140867600476722281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.51, z: 0}
+  m_LocalPosition: {x: 0, y: -0.249, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9140867600583730065}
@@ -196,7 +196,7 @@ MonoBehaviour:
   - {x: -0.25367832, y: -0.18748641, z: 0}
   m_ShapePathHash: -195200123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 21700
+  m_InstanceId: 21134
 --- !u!114 &9140867600583730069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,16 +210,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSmoothing: 0.05
-  m_JumpForce: 5
+  m_JumpForce: 250
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
   m_GroundCheck: {fileID: 9140867600476722280}
+  groundCheckSize: {x: 0.51, y: 0.12}
   fallMultiplier: 4
   lowFallMultiplier: 4
-  wallCheckPos: 0.32
-  wallCheckSize: {x: 0.14, y: 0.5}
-  m_WallJumpForce: 8
+  wallCheckPos: {x: 0.32, y: 0.14}
+  wallCheckSize: {x: 0.14, y: 0.47}
+  m_WallJumpForce: 5
+  m_JumpFromWallForce: 10
 --- !u!114 &9140867600583730068
 MonoBehaviour:
   m_ObjectHideFlags: 0
