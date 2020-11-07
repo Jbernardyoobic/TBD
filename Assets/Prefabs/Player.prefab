@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 9140867600583730070}
   - component: {fileID: 9140867600583730069}
   - component: {fileID: 9140867600583730068}
-  - component: {fileID: -1787411375533626315}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -233,6 +232,7 @@ MonoBehaviour:
   wallCheckSize: {x: 0.14, y: 0.47}
   m_WallJumpForce: 5
   m_JumpFromWallForce: 10
+  dashPower: 8
 --- !u!114 &9140867600583730068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,16 +247,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller2D: {fileID: 9140867600583730069}
   speed: 35
---- !u!114 &-1787411375533626315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9140867600583730067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f352b8a87f861743973d4781124a0f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashPower: 8
