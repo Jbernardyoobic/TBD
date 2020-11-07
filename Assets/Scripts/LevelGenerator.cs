@@ -13,6 +13,10 @@ public class LevelGenerator : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Keypad2)) {
             GenerateLevel(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad3)) {
+            GenerateLevel(2);
+        }
     }
 
     void ClearLevel() {
