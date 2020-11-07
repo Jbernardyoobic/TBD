@@ -14,6 +14,7 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private Vector2 wallCheckSize;
     [SerializeField] private float m_WallJumpForce;
     [SerializeField] private float m_JumpFromWallForce;
+    [SerializeField] private float dashPower;
 
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -28,6 +29,9 @@ public class CharacterController2D : MonoBehaviour {
     private int isTouchingLeftOrRight;
     private bool canWallJump;
 
+    private DashState dashState = DashState.Ready;
+    private float dashTimer = 0;
+    private Vector2 savedVelocity;
 
 
     [System.Serializable]
@@ -58,6 +62,29 @@ public class CharacterController2D : MonoBehaviour {
             canWallJump = true;
         } else {
             canWallJump = false;
+        }
+
+        this.updateDash();
+    }
+
+    private void updateDash() {
+        switch (dashState) {
+            case DashState.Ready:
+                var isDashKeyDown = Input.GetKeyDown(KeyCode.LeftShift);
+                if (isDashKeyDown) {
+                    savedVelocity = m_Rigidbody2D.velocity;
+                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x * dashPower, m_Rigidbody2D.velocity.y);
+                    dashState = DashState.Cooldown;
+                    dashTimer += Time.deltaTime * 3;
+                }
+                break;
+            case DashState.Cooldown:
+                dashTimer -= Time.deltaTime;
+                if (dashTimer <= 0) {
+                    dashTimer = 0;
+                    dashState = DashState.Ready;
+                }
+                break;
         }
     }
 
@@ -109,4 +136,9 @@ public class CharacterController2D : MonoBehaviour {
         transform.Rotate(0f, 180f, 0f);
         transform.InverseTransformDirection(0f, 180f, 0f);
     }
+}
+
+public enum DashState {
+    Ready,
+    Cooldown
 }
