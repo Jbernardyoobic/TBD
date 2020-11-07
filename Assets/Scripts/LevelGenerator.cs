@@ -2,26 +2,37 @@
 
 public class LevelGenerator : MonoBehaviour {
 
-    public Texture2D map;
+    public Texture2D[] map;
     public ColorToPrefab[] colorMappings;
 
-    // Start is called before the first frame update
-    void Start() {
-        GenerateLevel();
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Keypad1)) {
+            GenerateLevel(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad2)) {
+            GenerateLevel(1);
+        }
     }
 
-    void GenerateLevel() {
+    void ClearLevel() {
+        foreach (Transform child in transform) {
+            Destroy(child.gameObject);
+        }
+    }
 
-        for (int x = 0; x < map.width; x++) {
-            for (int y = 0; y < map.height; y++) {
-                GenerateTile(x, y);
+    void GenerateLevel(int mapIndex) {
+        ClearLevel();
+        for (int x = 0; x < map[mapIndex].width; x++) {
+            for (int y = 0; y < map[mapIndex].height; y++) {
+                GenerateTile(x, y, mapIndex);
             }
         }
 
     }
 
-    void GenerateTile(int x, int y) {
-        Color pixelColor = map.GetPixel(x, y);
+    void GenerateTile(int x, int y, int mapIndex) {
+        Color pixelColor = map[mapIndex].GetPixel(x, y);
 
         if (pixelColor.a == 0) {
             return;
