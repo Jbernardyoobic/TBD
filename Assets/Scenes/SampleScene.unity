@@ -167,23 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9204ce0807344bb458db8c2ec8ecc4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map:
-  - {fileID: 2800000, guid: c3e321f47549cb241bda2c52a2d10c09, type: 3}
-  - {fileID: 2800000, guid: 7df862d3b9c95ad488bdc4313ed5e575, type: 3}
-  - {fileID: 2800000, guid: 3f24b3091e060574799fb46705dab41a, type: 3}
-  colorMappings:
-  - color: {r: 0, g: 0, b: 0, a: 1}
-    prefab: {fileID: 6335788126467945218, guid: 40042ba73466d0d438753c4a997e5b84,
-      type: 3}
-  - color: {r: 1, g: 0, b: 0, a: 1}
-    prefab: {fileID: 9140867600583730067, guid: 8a20b30633ba6914b988f693745d11da,
-      type: 3}
-  - color: {r: 0, g: 1, b: 0, a: 1}
-    prefab: {fileID: 5573803344320697329, guid: 276b475a7ebd50f4d996cbefcc2a195c,
-      type: 3}
-  - color: {r: 0.5058824, g: 0.5058824, b: 0.5058824, a: 1}
-    prefab: {fileID: 6335788126467945218, guid: 40042ba73466d0d438753c4a997e5b84,
-      type: 3}
+  levels:
+  - {fileID: 5176335128839057830, guid: e7c5e6b2d0f63d143884d2c4ae8ed97d, type: 3}
+  - {fileID: 7176577536057005673, guid: ea744e8caad006f4f86afbaf7fe8e4ee, type: 3}
+  - {fileID: 5195844206312161241, guid: 5d7da223c470b3548acf2a60ee22198f, type: 3}
 --- !u!1 &392193164
 GameObject:
   m_ObjectHideFlags: 0
