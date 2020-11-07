@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D playerRigidbody;
     private float playerDirection;
     private bool jump;
+    private bool dash;
 
     private void Update() {
         playerDirection = Input.GetAxisRaw("Horizontal") * speed;
@@ -17,11 +18,15 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButtonDown("Jump")) {
             jump = true;
         }
+        if (Input.GetButtonDown("Fire2")) {
+            dash = true;
+        }
     }
 
     private void FixedUpdate() {
-        controller2D.Move(playerDirection * Time.deltaTime, jump);
+        controller2D.Move(playerDirection * Time.deltaTime, jump, dash);
         jump = false;
+        dash = false;
     }
 
 }

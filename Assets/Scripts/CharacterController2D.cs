@@ -63,14 +63,11 @@ public class CharacterController2D : MonoBehaviour {
         } else {
             canWallJump = false;
         }
-
-        this.updateDash();
     }
 
-    private void updateDash() {
+    private void updateDash(bool isDashKeyDown) {
         switch (dashState) {
             case DashState.Ready:
-                var isDashKeyDown = Input.GetKeyDown(KeyCode.LeftShift);
                 if (isDashKeyDown) {
                     savedVelocity = m_Rigidbody2D.velocity;
                     m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x * dashPower, m_Rigidbody2D.velocity.y);
@@ -97,7 +94,7 @@ public class CharacterController2D : MonoBehaviour {
         Gizmos.DrawCube(new Vector2(m_GroundCheck.position.x, m_GroundCheck.position.y), groundCheckSize);
     }
 
-    public void Move(float move, bool jump) {
+    public void Move(float move, bool jump, bool dash) {
 
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
@@ -127,6 +124,8 @@ public class CharacterController2D : MonoBehaviour {
         } else if (m_Rigidbody2D.velocity.y > 0 && !Input.GetButton("Jump")) {
             m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (lowFallMultiplier - 1) * Time.deltaTime;
         }
+
+        updateDash(dash);
     }
 
     public void Flip() {
