@@ -150,7 +150,7 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 1073741825
+      m_AllTileFlags: 1073741826
   - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -164,7 +164,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: eb7e4fcde530a704fb03e0d7c06693ed, type: 2}
+    m_Data: {fileID: 11400000, guid: 09cf28c30bb563b40b3a5a04c362462c, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 001220b028d906847956d43c5d3ed353, type: 2}
   - m_RefCount: 1
@@ -360,7 +360,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &3631762449488164313
+--- !u!114 &4844654070543692236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
