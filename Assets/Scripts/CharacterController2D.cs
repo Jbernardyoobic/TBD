@@ -136,7 +136,7 @@ public class CharacterController2D : MonoBehaviour {
 
         //Wall Jump
         if (!m_Grounded && jump && canWallJump) {
-            m_Rigidbody2D.velocity = new Vector2(isTouchingLeftOrRight * m_JumpFromWallForce, m_WallJumpForce);
+            m_Rigidbody2D.velocity = new Vector2(isTouchingLeftOrRight * m_JumpFromWallForce * Time.deltaTime, m_WallJumpForce * Time.deltaTime);
         }
 
         //Accelerate the fall of the player to get a better jump feeling

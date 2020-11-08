@@ -11,7 +11,6 @@ public class LevelEnd : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log("GameObject1 collided with " + col.name);
         if (col.name == "Player") {
             int level = levelGenerator.currentLevel + 1 < levelGenerator.levels.Length ? levelGenerator.currentLevel + 1 : 0;
             levelGenerator.GenerateLevel(level);
