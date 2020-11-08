@@ -82,7 +82,7 @@ public class CharacterController2D : MonoBehaviour {
             case DashState.Ready:
                 if (isDashKeyDown) {
                     savedVelocity = m_Rigidbody2D.velocity;
-                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x * dashPower, m_Rigidbody2D.velocity.y);
+                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x * dashPower * Time.deltaTime, m_Rigidbody2D.velocity.y);
                     dashState = DashState.Cooldown;
                     dashTimer += Time.deltaTime * 3;
                 }

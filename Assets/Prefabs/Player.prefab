@@ -14672,7 +14672,7 @@ MonoBehaviour:
   m_WallJumpForce: 325
   wallSlideSpeed: 0.5
   m_JumpFromWallForce: 500
-  dashPower: 8
+  dashPower: 300
   dustFeet: {fileID: 2346299619724180547}
   dustBody: {fileID: 8895937807759026006}
   dustOnImpact: {fileID: 1325221935590220688}
