@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SpikesStill
+  m_Name: SpikesStill_3
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -3566365941546613960, guid: 2df00eff3fcbe6a4594c475eefc031a6,
+  m_Sprite: {fileID: -2405324426229755247, guid: 2df00eff3fcbe6a4594c475eefc031a6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:

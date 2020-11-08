@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 2df00eff3fcbe6a4594c475eefc031a6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8262857512118525124
+    second: SpikesStill_0
+  - first:
+      213: -3566365941546613960
+    second: SpikesStill_1
+  - first:
+      213: 1433652448002441138
+    second: SpikesStill_2
+  - first:
+      213: -2405324426229755247
+    second: SpikesStill_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +53,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
@@ -87,7 +99,231 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SpikesStill_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 5}
+        - {x: -2, y: 5}
+        - {x: -2, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 7}
+        - {x: -7, y: 7}
+        - {x: -7, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: -7, y: -8}
+        - {x: -7, y: -7}
+        - {x: -6, y: -7}
+        - {x: -6, y: -6}
+        - {x: -2, y: -6}
+        - {x: -2, y: -5}
+        - {x: 1, y: -5}
+        - {x: 1, y: -4}
+        - {x: -2, y: -4}
+        - {x: -2, y: -3}
+        - {x: -6, y: -3}
+        - {x: -6, y: -1}
+        - {x: -5, y: -1}
+        - {x: -5, y: 1}
+        - {x: -6, y: 1}
+        - {x: -6, y: 3}
+        - {x: -2, y: 3}
+        - {x: -2, y: 4}
+        - {x: 1, y: 4}
+      physicsShape:
+      - - {x: -2, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 7}
+        - {x: -7, y: 7}
+        - {x: -7, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: -7, y: -8}
+        - {x: -7, y: -7}
+        - {x: -6, y: -7}
+        - {x: -6, y: -6}
+        - {x: -2, y: -6}
+        - {x: -2, y: -5}
+        - {x: 1, y: -5}
+        - {x: 1, y: -4}
+        - {x: -2, y: -4}
+        - {x: -2, y: -3}
+        - {x: -6, y: -3}
+        - {x: -6, y: -1}
+        - {x: -5, y: -1}
+        - {x: -5, y: 1}
+        - {x: -6, y: 1}
+        - {x: -6, y: 3}
+        - {x: -2, y: 3}
+        - {x: -2, y: 4}
+        - {x: 1, y: 4}
+        - {x: 1, y: 5}
+        - {x: -2, y: 5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc1e77f0219ba270800000000000000
+      internalID: 8262857512118525124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpikesStill_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 3, y: -2}
+        - {x: 3, y: -6}
+        - {x: 1, y: -6}
+        - {x: 1, y: -5}
+        - {x: -1, y: -5}
+        - {x: -1, y: -6}
+        - {x: -3, y: -6}
+        - {x: -3, y: -2}
+        - {x: -4, y: -2}
+        - {x: -4, y: 1}
+        - {x: -5, y: 1}
+        - {x: -5, y: -2}
+        - {x: -6, y: -2}
+        - {x: -6, y: -6}
+        - {x: -7, y: -6}
+        - {x: -7, y: -7}
+        - {x: -8, y: -7}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: -7}
+        - {x: 7, y: -7}
+        - {x: 7, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -2}
+        - {x: 5, y: -2}
+        - {x: 5, y: 1}
+        - {x: 4, y: 1}
+        - {x: 4, y: -2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83300135219b18ec0800000000000000
+      internalID: -3566365941546613960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpikesStill_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1, y: 5}
+        - {x: 1, y: 5}
+        - {x: 1, y: 6}
+        - {x: 3, y: 6}
+        - {x: 3, y: 2}
+        - {x: 4, y: 2}
+        - {x: 4, y: -1}
+        - {x: 5, y: -1}
+        - {x: 5, y: 2}
+        - {x: 6, y: 2}
+        - {x: 6, y: 6}
+        - {x: 7, y: 6}
+        - {x: 7, y: 7}
+        - {x: 8, y: 7}
+        - {x: 8, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: 7}
+        - {x: -7, y: 7}
+        - {x: -7, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 2}
+        - {x: -5, y: 2}
+        - {x: -5, y: -1}
+        - {x: -4, y: -1}
+        - {x: -4, y: 2}
+        - {x: -3, y: 2}
+        - {x: -3, y: 6}
+        - {x: -1, y: 6}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 2bffd8e3e4b55e310800000000000000
+      internalID: 1433652448002441138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpikesStill_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 5}
+        - {x: -1, y: 5}
+        - {x: -1, y: 4}
+        - {x: 2, y: 4}
+        - {x: 2, y: 3}
+        - {x: 6, y: 3}
+        - {x: 6, y: 1}
+        - {x: 5, y: 1}
+        - {x: 5, y: -1}
+        - {x: 6, y: -1}
+        - {x: 6, y: -3}
+        - {x: 2, y: -3}
+        - {x: 2, y: -4}
+        - {x: -1, y: -4}
+        - {x: -1, y: -5}
+        - {x: 2, y: -5}
+        - {x: 2, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -7}
+        - {x: 7, y: -7}
+        - {x: 7, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+        - {x: 7, y: 8}
+        - {x: 7, y: 7}
+        - {x: 6, y: 7}
+        - {x: 6, y: 6}
+        - {x: 2, y: 6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1925105ad229e9ed0800000000000000
+      internalID: -2405324426229755247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape:
     - - {x: -7, y: 2}
