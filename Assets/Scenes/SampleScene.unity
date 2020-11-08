@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 5176335128839057830, guid: e7c5e6b2d0f63d143884d2c4ae8ed97d, type: 3}
   - {fileID: 7176577536057005673, guid: ea744e8caad006f4f86afbaf7fe8e4ee, type: 3}
   - {fileID: 5195844206312161241, guid: 5d7da223c470b3548acf2a60ee22198f, type: 3}
+  currentLevel: -1
 --- !u!1 &392193164
 GameObject:
   m_ObjectHideFlags: 0
