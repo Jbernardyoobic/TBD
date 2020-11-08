@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D playerRigidbody;
     private float playerDirection;
     private bool jump;
+    private bool releasedJumpButton;
     private bool dash;
 
     private void Update() {
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump")) {
             jump = true;
+            releasedJumpButton = false;
+        }
+        if (Input.GetButtonUp("Jump")) {
+            releasedJumpButton = true;
         }
         if (Input.GetButtonDown("Fire2")) {
             dash = true;
@@ -24,7 +29,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        controller2D.Move(playerDirection * Time.deltaTime, jump, dash);
+        controller2D.Move(playerDirection * Time.deltaTime, jump, dash, releasedJumpButton);
         jump = false;
         dash = false;
     }

@@ -45,7 +45,7 @@ public class CharacterController2D : MonoBehaviour {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         m_Grounded = false;
 
         isTouchingGround = Physics2D.OverlapBox(new Vector2(m_GroundCheck.position.x, m_GroundCheck.position.y), groundCheckSize, 0f, m_WhatIsGround);
@@ -98,15 +98,16 @@ public class CharacterController2D : MonoBehaviour {
         Gizmos.DrawCube(new Vector2(m_GroundCheck.position.x, m_GroundCheck.position.y), groundCheckSize);
     }
 
-    public void Move(float move, bool jump, bool dash) {
+    public void Move(float move, bool jump, bool dash, bool releasedJumpButton) {
 
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-        // And then smoothing it out and applying it to the character
         if (isTouchingWallLeft || isTouchingWallRight) {
+            //Wall Slide
             CreateDustOnBody();
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * wallSlideSpeed);
         } else {
+            // And then smoothing it out and applying it to the character
             m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         }
 
@@ -117,6 +118,7 @@ public class CharacterController2D : MonoBehaviour {
             Flip();
         }
 
+        //Jump
         if (m_Grounded && jump) {
             // Add a vertical force to the player.
             CreateDustOnFeet();
@@ -124,6 +126,7 @@ public class CharacterController2D : MonoBehaviour {
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
 
+        //Wall Jump
         if (!m_Grounded && jump && canWallJump) {
             m_Rigidbody2D.velocity = new Vector2(isTouchingLeftOrRight * m_JumpFromWallForce, m_WallJumpForce);
         }
@@ -131,7 +134,7 @@ public class CharacterController2D : MonoBehaviour {
         //Accelerate the fall of the player to get a better jump feeling
         if (m_Rigidbody2D.velocity.y < 0) {
             m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (m_Rigidbody2D.velocity.y > 0 && !Input.GetButton("Jump")) {
+        } else if (m_Rigidbody2D.velocity.y > 0 && releasedJumpButton) {
             m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (lowFallMultiplier - 1) * Time.deltaTime;
         }
 
