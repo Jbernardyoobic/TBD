@@ -4,22 +4,19 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour {
 
     public GameObject[] levels;
-    public int currentLevel;
+    public int currentLevel = -1;
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Keypad1)) {
             GenerateLevel(0);
-            currentLevel = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad2)) {
             GenerateLevel(1);
-            currentLevel = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad3)) {
             GenerateLevel(2);
-            currentLevel = 2;
         }
     }
 
@@ -31,6 +28,7 @@ public class LevelGenerator : MonoBehaviour {
 
     public void GenerateLevel(int mapIndex) {
         ClearLevel();
+        currentLevel = mapIndex;
         Instantiate(levels[mapIndex], gameObject.transform.position, Quaternion.identity, transform);
     }
 }
