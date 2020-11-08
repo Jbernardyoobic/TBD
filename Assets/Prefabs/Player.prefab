@@ -231,6 +231,7 @@ MonoBehaviour:
   wallCheckPos: {x: 0.32, y: 0.14}
   wallCheckSize: {x: 0.14, y: 0.47}
   m_WallJumpForce: 5
+  wallSlideSpeed: 0.2
   m_JumpFromWallForce: 10
   dashPower: 8
 --- !u!114 &9140867600583730068

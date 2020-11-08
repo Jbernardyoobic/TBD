@@ -13,6 +13,7 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private Vector2 wallCheckPos;
     [SerializeField] private Vector2 wallCheckSize;
     [SerializeField] private float m_WallJumpForce;
+    [SerializeField] private float wallSlideSpeed;
     [SerializeField] private float m_JumpFromWallForce;
     [SerializeField] private float dashPower;
 
@@ -99,7 +100,11 @@ public class CharacterController2D : MonoBehaviour {
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
         // And then smoothing it out and applying it to the character
-        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        if (isTouchingWallLeft || isTouchingWallRight) {
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * wallSlideSpeed);
+        } else {
+            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
 
         // If the input is moving the player right and the player is facing left...
         if ((move > 0 && !m_FacingRight)) {
