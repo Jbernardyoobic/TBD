@@ -7,6 +7,9 @@ public class LevelGenerator : MonoBehaviour {
     public int currentLevel = -1;
 
     private void Update() {
+        if (currentLevel == -1) {
+            GenerateLevel(0);
+        }
         if (Input.GetKeyDown(KeyCode.Keypad1)) {
             GenerateLevel(0);
         }
