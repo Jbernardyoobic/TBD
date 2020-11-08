@@ -19,10 +19,12 @@ public class CharacterController2D : MonoBehaviour {
 
     [SerializeField] private ParticleSystem dustFeet;
     [SerializeField] private ParticleSystem dustBody;
+    [SerializeField] private ParticleSystem dustOnImpact;
 
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;            // Whether or not the player is grounded.
+    private bool wasGrouned;
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
@@ -67,6 +69,12 @@ public class CharacterController2D : MonoBehaviour {
         } else {
             canWallJump = false;
         }
+
+        if (!wasGrouned && m_Grounded) {
+            CreateDustOnImpact();
+        }
+
+        wasGrouned = m_Grounded;
     }
 
     private void updateDash(bool isDashKeyDown) {
@@ -155,6 +163,10 @@ public class CharacterController2D : MonoBehaviour {
 
     public void CreateDustOnBody() {
         dustBody.Play();
+    }
+
+    public void CreateDustOnImpact() {
+        dustOnImpact.Play();
     }
 }
 
