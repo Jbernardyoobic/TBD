@@ -12,7 +12,7 @@ public class TriggerTraps : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.name == "Player") {
-            Destroy(other.gameObject);
+            Debug.Log("is touching player");
             int level = levelGenerator.currentLevel > 0 ? levelGenerator.currentLevel - 1 : 0;
             levelGenerator.GenerateLevel(level);
         }

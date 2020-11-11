@@ -1,12 +1,23 @@
 ﻿using System.Linq.Expressions;
 using UnityEngine;
+using TMPro;
 
 public class LevelGenerator : MonoBehaviour {
 
     public LevelComponent[] levels;
-
-
+    public TimerHandler stopWatch;
+    public PlayerData playerData;
     public int currentLevel = -1;
+
+    public Canvas endScreen;
+    public TextMeshProUGUI timePerLevelRecap;
+    public Canvas timerScreen;
+
+    private void Awake() {
+        stopWatch = GameObject.FindObjectOfType<TimerHandler>();
+        playerData.InitiateData(levels.Length);
+        endScreen.enabled = false;
+    }
 
     private void Update() {
         if (currentLevel == -1) {
@@ -34,6 +45,30 @@ public class LevelGenerator : MonoBehaviour {
     public void GenerateLevel(int mapIndex) {
         ClearLevel();
         currentLevel = mapIndex;
-        Instantiate(levels[mapIndex].levelPrefab, gameObject.transform.position, Quaternion.identity, transform);
+        Instantiate(levels[currentLevel].levelPrefab, gameObject.transform.position, Quaternion.identity, transform);
+        stopWatch.ResetStopWatch();
+    }
+
+    public void RegisterTime(int level) {
+        stopWatch.EndStopWatch();
+        playerData.TimePerLevel[level] = stopWatch.LevelTime;
+    }
+
+    public void EndGame() {
+        ClearLevel();
+        endScreen.enabled = true;
+        timerScreen.enabled = false;
+        timePerLevelRecap.text = "";
+
+        for (int i = 0; i < playerData.TimePerLevel.Length; i++) {
+            timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.TimePerLevel[i].ToString("F2") + "s\n\n";
+        }
+    }
+
+    public void RestartGame() {
+        endScreen.enabled = false;
+        timerScreen.enabled = true;
+        stopWatch.ResetStopWatch();
+        GenerateLevel(0);
     }
 }

@@ -12,8 +12,13 @@ public class LevelEnd : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.name == "Player") {
-            int level = levelGenerator.currentLevel + 1 < levelGenerator.levels.Length ? levelGenerator.currentLevel + 1 : 0;
-            levelGenerator.GenerateLevel(level);
+            int level = levelGenerator.currentLevel + 1;
+            levelGenerator.RegisterTime(levelGenerator.currentLevel);
+            if (level < levelGenerator.levels.Length) {
+                levelGenerator.GenerateLevel(level);
+            } else {
+                levelGenerator.EndGame();
+            }
         }
     }
 }
