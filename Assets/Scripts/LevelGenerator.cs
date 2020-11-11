@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Linq;
+using System.Linq.Expressions;
 using UnityEngine;
 using TMPro;
 
@@ -63,6 +64,8 @@ public class LevelGenerator : MonoBehaviour {
         for (int i = 0; i < playerData.TimePerLevel.Length; i++) {
             timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.TimePerLevel[i].ToString("F2") + "s\n\n";
         }
+
+        timePerLevelRecap.text += "Total time: " + playerData.TimePerLevel.Sum().ToString("F2") + "s";
     }
 
     public void RestartGame() {
