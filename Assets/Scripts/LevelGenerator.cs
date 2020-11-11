@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour {
 
-    public GameObject[] levels;
+    public LevelComponent[] levels;
+
+
     public int currentLevel = -1;
 
     private void Update() {
@@ -32,6 +34,6 @@ public class LevelGenerator : MonoBehaviour {
     public void GenerateLevel(int mapIndex) {
         ClearLevel();
         currentLevel = mapIndex;
-        Instantiate(levels[mapIndex], gameObject.transform.position, Quaternion.identity, transform);
+        Instantiate(levels[mapIndex].levelPrefab, gameObject.transform.position, Quaternion.identity, transform);
     }
 }
