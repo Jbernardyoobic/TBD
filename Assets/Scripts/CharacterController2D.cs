@@ -20,6 +20,9 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private ParticleSystem dustFeet;
     [SerializeField] private ParticleSystem dustBody;
     [SerializeField] private ParticleSystem dustOnImpact;
+    [SerializeField] private ParticleSystem dashLeft;
+    [SerializeField] private ParticleSystem dashRight;
+
 
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -83,6 +86,7 @@ public class CharacterController2D : MonoBehaviour {
                     savedVelocity = m_Rigidbody2D.velocity;
                     m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x * dashPower * Time.deltaTime, m_Rigidbody2D.velocity.y);
                     dashState = DashState.Cooldown;
+                    CreateDashParticle();
                 }
                 break;
             case DashState.Cooldown:
@@ -163,6 +167,14 @@ public class CharacterController2D : MonoBehaviour {
 
     public void CreateDustOnImpact() {
         dustOnImpact.Play();
+    }
+
+    public void CreateDashParticle() {
+        if (m_FacingRight) {
+            dashRight.Play();
+        } else {
+            dashLeft.Play();
+        }
     }
 }
 
