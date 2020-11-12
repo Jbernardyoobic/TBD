@@ -36,7 +36,6 @@ public class CharacterController2D : MonoBehaviour {
     private bool canWallJump;
 
     private DashState dashState = DashState.Ready;
-    private float dashTimer = 0;
     private Vector2 savedVelocity;
 
 
@@ -84,13 +83,10 @@ public class CharacterController2D : MonoBehaviour {
                     savedVelocity = m_Rigidbody2D.velocity;
                     m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x * dashPower * Time.deltaTime, m_Rigidbody2D.velocity.y);
                     dashState = DashState.Cooldown;
-                    dashTimer += Time.deltaTime * 3;
                 }
                 break;
             case DashState.Cooldown:
-                dashTimer -= Time.deltaTime;
-                if (dashTimer <= 0) {
-                    dashTimer = 0;
+                if (m_Grounded) {
                     dashState = DashState.Ready;
                 }
                 break;
