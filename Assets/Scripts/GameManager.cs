@@ -80,8 +80,6 @@ public class GameManager : MonoBehaviour {
     public void RegisterCollectibles(int mapIndex) {
         levels[mapIndex].totalCollectibles = playerData.CurrentGatheredCollectibles;
         levels[mapIndex].secretCollectibles = playerData.GatheredSecretCollectibles;
-        Debug.Log(playerData.CurrentGatheredCollectibles);
-        Debug.Log(playerData.GatheredSecretCollectibles);
         playerData.CurrentGatheredCollectibles = 0;
         playerData.GatheredSecretCollectibles = 0;
     }
