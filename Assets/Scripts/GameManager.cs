@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System;
+using System.Linq;
 using System.Linq.Expressions;
 using UnityEngine;
 using TMPro;
@@ -10,17 +12,24 @@ public class GameManager : MonoBehaviour {
     public PlayerData playerData;
     public int currentLevel = -1;
 
-    public Canvas endScreen;
-    public TextMeshProUGUI timePerLevelRecap;
+    public Canvas endGameScreen;
+    public Canvas endLevelScreen;
     public Canvas timerScreen;
+    public TextMeshProUGUI timePerLevelRecap;
+    public TextMeshProUGUI endLevelResume;
+
+    private bool playerSubmit = false;
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
         playerData.InitiateData(levels.Length);
-        endScreen.enabled = false;
+        endGameScreen.enabled = false;
+        endLevelScreen.enabled = false;
     }
 
     private void Update() {
+        playerSubmit = Input.GetButton("Submit");
+        Debug.Log(playerSubmit);
         if (currentLevel == -1) {
             GenerateLevel(0);
         }
@@ -59,8 +68,7 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame() {
         ClearLevel();
-        endScreen.enabled = true;
-        timerScreen.enabled = false;
+        ShowEndGameScreen();
         timePerLevelRecap.text = "";
 
         for (int i = 0; i < playerData.TimePerLevel.Length; i++) {
@@ -70,17 +78,57 @@ public class GameManager : MonoBehaviour {
         timePerLevelRecap.text += "Total time: " + playerData.TimePerLevel.Sum().ToString("F2") + "s";
     }
 
+    public void EndLevel(int mapIndex) {
+        ClearLevel();
+        ShowEndLevelScreen();
+        endLevelResume.text = String.Format("Time : {0:F2}s\n\nCollectibles : {1}/{2}\n\nSecret Collectibles : {3}/1",
+                                            playerData.TimePerLevel[mapIndex],
+                                            playerData.TotalCollectiblesPerLevel[mapIndex],
+                                            levels[mapIndex].totalCollectibles,
+                                            playerData.SecretCollectiblesPerLevel[mapIndex]);
+        //     yield return StartCoroutine(WaitForKeyDown(playerSubmit));
+        //     Debug.Log("Done");
+        //     NextLevel();
+        //     yield return null;
+    }
+
+    // IEnumerator WaitForKeyDown(bool done) {
+    //     while (!done)
+    //         yield return null;
+    // }
+
     public void RestartGame() {
-        endScreen.enabled = false;
-        timerScreen.enabled = true;
+        ShowTimerScreen();
         stopWatch.ResetStopWatch();
         GenerateLevel(0);
     }
 
+    public void NextLevel() {
+        ShowTimerScreen();
+        stopWatch.ResetStopWatch();
+        GenerateLevel(currentLevel + 1);
+    }
+
     public void RegisterCollectibles(int mapIndex) {
-        levels[mapIndex].totalCollectibles = playerData.CurrentGatheredCollectibles;
-        levels[mapIndex].secretCollectibles = playerData.GatheredSecretCollectibles;
+        playerData.TotalCollectiblesPerLevel[mapIndex] = playerData.CurrentGatheredCollectibles;
+        playerData.SecretCollectiblesPerLevel[mapIndex] = playerData.GatheredSecretCollectibles;
         playerData.CurrentGatheredCollectibles = 0;
         playerData.GatheredSecretCollectibles = 0;
+    }
+
+    private void ShowEndLevelScreen() {
+        endLevelScreen.enabled = true;
+        timerScreen.enabled = false;
+    }
+
+    private void ShowTimerScreen() {
+        endGameScreen.enabled = false;
+        endLevelScreen.enabled = false;
+        timerScreen.enabled = true;
+    }
+
+    private void ShowEndGameScreen() {
+        endGameScreen.enabled = true;
+        timerScreen.enabled = false;
     }
 }

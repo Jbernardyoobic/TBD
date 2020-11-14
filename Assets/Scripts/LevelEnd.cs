@@ -16,7 +16,7 @@ public class LevelEnd : MonoBehaviour {
             gameManager.RegisterTime(gameManager.currentLevel);
             gameManager.RegisterCollectibles(gameManager.currentLevel);
             if (level < gameManager.levels.Length) {
-                gameManager.GenerateLevel(level);
+                gameManager.EndLevel(gameManager.currentLevel);
             } else {
                 gameManager.EndGame();
             }
