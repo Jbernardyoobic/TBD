@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShowOnPause
   - LevelEnd
+  - GoldNugget
   layers:
   - Default
   - TransparentFX

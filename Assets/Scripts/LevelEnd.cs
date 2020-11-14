@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour {
 
-    private LevelGenerator levelGenerator;
+    private GameManager gameManager;
 
     private void Awake() {
-        levelGenerator = GameObject.FindObjectOfType<LevelGenerator>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.name == "Player") {
-            int level = levelGenerator.currentLevel + 1;
-            levelGenerator.RegisterTime(levelGenerator.currentLevel);
-            if (level < levelGenerator.levels.Length) {
-                levelGenerator.GenerateLevel(level);
+            int level = gameManager.currentLevel + 1;
+            gameManager.RegisterTime(gameManager.currentLevel);
+            if (level < gameManager.levels.Length) {
+                gameManager.GenerateLevel(level);
             } else {
-                levelGenerator.EndGame();
+                gameManager.EndGame();
             }
         }
     }

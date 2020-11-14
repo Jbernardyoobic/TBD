@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TriggerTraps : MonoBehaviour {
 
-    private LevelGenerator levelGenerator;
+    private GameManager levelGenerator;
 
     private void Awake() {
-        levelGenerator = GameObject.FindObjectOfType<LevelGenerator>();
+        levelGenerator = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

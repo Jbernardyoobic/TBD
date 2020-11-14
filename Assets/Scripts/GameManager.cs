@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using UnityEngine;
 using TMPro;
 
-public class LevelGenerator : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
     public LevelComponent[] levels;
     public TimerHandler stopWatch;

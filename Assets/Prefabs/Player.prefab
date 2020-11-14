@@ -105,7 +105,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -19458,7 +19458,7 @@ MonoBehaviour:
   - {x: -0.25367832, y: -0.18748641, z: 0}
   m_ShapePathHash: -195200123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32400
+  m_InstanceId: 33858
 --- !u!114 &9140867600583730069
 MonoBehaviour:
   m_ObjectHideFlags: 0
