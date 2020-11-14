@@ -109,7 +109,7 @@ public class CharacterController2D : MonoBehaviour {
 
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-        if (isTouchingWallLeft || isTouchingWallRight) {
+        if ((isTouchingWallLeft || isTouchingWallRight) && !m_Grounded) {
             //Wall Slide
             CreateDustOnBody();
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * wallSlideSpeed);

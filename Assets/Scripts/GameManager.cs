@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI t_timePerLevelRecap;
     public TextMeshProUGUI t_endLevelResume;
     public TextMeshProUGUI t_endLevelTimeDiff;
+    public TextMeshProUGUI t_endLevelButtonText;
 
     private bool playerSubmit = false;
-    private float levelTimeDiff;
+    private float currentLevelTimeDiff;
+    private float currentLevelTime;
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
@@ -65,13 +67,13 @@ public class GameManager : MonoBehaviour {
 
     public void RegisterTime(int level) {
         stopWatch.EndStopWatch();
-
-        if (playerData.TimePerLevel[level] != 0) {
-            levelTimeDiff = playerData.TimePerLevel[level] - stopWatch.LevelTime;
-            playerData.TimePerLevel[level] = stopWatch.LevelTime < playerData.TimePerLevel[level] ? stopWatch.LevelTime : playerData.TimePerLevel[level];
+        currentLevelTime = stopWatch.LevelTime;
+        if (playerData.BestTimePerLevel[level] != 0) {
+            currentLevelTimeDiff = playerData.BestTimePerLevel[level] - currentLevelTime;
+            playerData.BestTimePerLevel[level] = currentLevelTime < playerData.BestTimePerLevel[level] ? currentLevelTime : playerData.BestTimePerLevel[level];
         } else {
-            levelTimeDiff = 0;
-            playerData.TimePerLevel[level] = stopWatch.LevelTime;
+            currentLevelTimeDiff = 0;
+            playerData.BestTimePerLevel[level] = currentLevelTime;
         }
     }
 
@@ -80,11 +82,11 @@ public class GameManager : MonoBehaviour {
         ShowEndGameScreen();
         t_timePerLevelRecap.text = "";
 
-        for (int i = 0; i < playerData.TimePerLevel.Length; i++) {
-            t_timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.TimePerLevel[i].ToString("F2") + "s\n\n";
+        for (int i = 0; i < playerData.BestTimePerLevel.Length; i++) {
+            t_timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.BestTimePerLevel[i].ToString("F2") + "s\n\n";
         }
 
-        t_timePerLevelRecap.text += "Total time: " + playerData.TimePerLevel.Sum().ToString("F2") + "s";
+        t_timePerLevelRecap.text += "Total time: " + playerData.BestTimePerLevel.Sum().ToString("F2") + "s";
     }
 
     public void EndLevel(int mapIndex) {
@@ -92,16 +94,22 @@ public class GameManager : MonoBehaviour {
         ShowEndLevelScreen();
         t_endLevelTimeDiff.text = "";
 
-        if (levelTimeDiff != 0) {
-            t_endLevelTimeDiff.color = levelTimeDiff > 0 ? Color.green : Color.red;
-            t_endLevelTimeDiff.text += levelTimeDiff > 0 ? "-" : "+";
-            t_endLevelTimeDiff.text += String.Format("{0:F3}s", Mathf.Abs(levelTimeDiff));
+        if (currentLevelTimeDiff != 0) {
+            t_endLevelTimeDiff.color = currentLevelTimeDiff > 0 ? Color.green : Color.red;
+            t_endLevelTimeDiff.text += currentLevelTimeDiff > 0 ? "-" : "+";
+            t_endLevelTimeDiff.text += String.Format("{0:F3}s", Mathf.Abs(currentLevelTimeDiff));
         }
         t_endLevelResume.text = String.Format("Time : {0:F2}s\n\nCollectibles : {1}/{2}\n\nSecret Collectibles : {3}/1",
-                                            playerData.TimePerLevel[mapIndex],
+                                            currentLevelTime,
                                             playerData.TotalCollectiblesPerLevel[mapIndex],
                                             levels[mapIndex].totalCollectibles,
                                             playerData.SecretCollectiblesPerLevel[mapIndex]);
+
+        if (mapIndex + 1 > levels.Length - 1) {
+            t_endLevelButtonText.text = "End Game";
+        } else {
+            t_endLevelButtonText.text = "NEXT";
+        }
         //     yield return StartCoroutine(WaitForKeyDown(playerSubmit));
         //     Debug.Log("Done");
         //     NextLevel();
@@ -122,7 +130,11 @@ public class GameManager : MonoBehaviour {
     public void NextLevel() {
         ShowTimerScreen();
         stopWatch.ResetStopWatch();
-        GenerateLevel(currentLevel + 1);
+        if (currentLevel + 1 > levels.Length - 1) {
+            EndGame();
+        } else {
+            GenerateLevel(currentLevel + 1);
+        }
     }
 
     public void RegisterCollectibles(int mapIndex) {
