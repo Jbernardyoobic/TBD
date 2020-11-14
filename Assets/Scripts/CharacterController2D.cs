@@ -20,8 +20,7 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private ParticleSystem dustFeet;
     [SerializeField] private ParticleSystem dustBody;
     [SerializeField] private ParticleSystem dustOnImpact;
-    [SerializeField] private ParticleSystem dashLeft;
-    [SerializeField] private ParticleSystem dashRight;
+    [SerializeField] private ParticleSystem dashParticle;
 
 
 
@@ -170,11 +169,7 @@ public class CharacterController2D : MonoBehaviour {
     }
 
     public void CreateDashParticle() {
-        if (m_FacingRight) {
-            dashRight.Play();
-        } else {
-            dashLeft.Play();
-        }
+        dashParticle.Play();
     }
 }
 
