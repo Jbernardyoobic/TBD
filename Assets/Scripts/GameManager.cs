@@ -12,19 +12,21 @@ public class GameManager : MonoBehaviour {
     public PlayerData playerData;
     public int currentLevel = -1;
 
-    public Canvas endGameScreen;
-    public Canvas endLevelScreen;
-    public Canvas timerScreen;
-    public TextMeshProUGUI timePerLevelRecap;
-    public TextMeshProUGUI endLevelResume;
+    public Canvas ui_endGameScreen;
+    public Canvas ui_endLevelScreen;
+    public Canvas ui_timerScreen;
+    public TextMeshProUGUI t_timePerLevelRecap;
+    public TextMeshProUGUI t_endLevelResume;
+    public TextMeshProUGUI t_endLevelTimeDiff;
 
     private bool playerSubmit = false;
+    private float levelTimeDiff;
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
         playerData.InitiateData(levels.Length);
-        endGameScreen.enabled = false;
-        endLevelScreen.enabled = false;
+        ui_endGameScreen.enabled = false;
+        ui_endLevelScreen.enabled = false;
     }
 
     private void Update() {
@@ -63,25 +65,39 @@ public class GameManager : MonoBehaviour {
 
     public void RegisterTime(int level) {
         stopWatch.EndStopWatch();
-        playerData.TimePerLevel[level] = stopWatch.LevelTime;
+
+        if (playerData.TimePerLevel[level] != 0) {
+            levelTimeDiff = playerData.TimePerLevel[level] - stopWatch.LevelTime;
+            playerData.TimePerLevel[level] = stopWatch.LevelTime < playerData.TimePerLevel[level] ? stopWatch.LevelTime : playerData.TimePerLevel[level];
+        } else {
+            levelTimeDiff = 0;
+            playerData.TimePerLevel[level] = stopWatch.LevelTime;
+        }
     }
 
     public void EndGame() {
         ClearLevel();
         ShowEndGameScreen();
-        timePerLevelRecap.text = "";
+        t_timePerLevelRecap.text = "";
 
         for (int i = 0; i < playerData.TimePerLevel.Length; i++) {
-            timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.TimePerLevel[i].ToString("F2") + "s\n\n";
+            t_timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.TimePerLevel[i].ToString("F2") + "s\n\n";
         }
 
-        timePerLevelRecap.text += "Total time: " + playerData.TimePerLevel.Sum().ToString("F2") + "s";
+        t_timePerLevelRecap.text += "Total time: " + playerData.TimePerLevel.Sum().ToString("F2") + "s";
     }
 
     public void EndLevel(int mapIndex) {
         ClearLevel();
         ShowEndLevelScreen();
-        endLevelResume.text = String.Format("Time : {0:F2}s\n\nCollectibles : {1}/{2}\n\nSecret Collectibles : {3}/1",
+        t_endLevelTimeDiff.text = "";
+
+        if (levelTimeDiff != 0) {
+            t_endLevelTimeDiff.color = levelTimeDiff > 0 ? Color.green : Color.red;
+            t_endLevelTimeDiff.text += levelTimeDiff > 0 ? "-" : "+";
+            t_endLevelTimeDiff.text += String.Format("{0:F3}s", Mathf.Abs(levelTimeDiff));
+        }
+        t_endLevelResume.text = String.Format("Time : {0:F2}s\n\nCollectibles : {1}/{2}\n\nSecret Collectibles : {3}/1",
                                             playerData.TimePerLevel[mapIndex],
                                             playerData.TotalCollectiblesPerLevel[mapIndex],
                                             levels[mapIndex].totalCollectibles,
@@ -117,18 +133,18 @@ public class GameManager : MonoBehaviour {
     }
 
     private void ShowEndLevelScreen() {
-        endLevelScreen.enabled = true;
-        timerScreen.enabled = false;
+        ui_endLevelScreen.enabled = true;
+        ui_timerScreen.enabled = false;
     }
 
     private void ShowTimerScreen() {
-        endGameScreen.enabled = false;
-        endLevelScreen.enabled = false;
-        timerScreen.enabled = true;
+        ui_endGameScreen.enabled = false;
+        ui_endLevelScreen.enabled = false;
+        ui_timerScreen.enabled = true;
     }
 
     private void ShowEndGameScreen() {
-        endGameScreen.enabled = true;
-        timerScreen.enabled = false;
+        ui_endGameScreen.enabled = true;
+        ui_timerScreen.enabled = false;
     }
 }
