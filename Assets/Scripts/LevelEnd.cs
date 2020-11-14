@@ -14,6 +14,7 @@ public class LevelEnd : MonoBehaviour {
         if (col.name == "Player") {
             int level = gameManager.currentLevel + 1;
             gameManager.RegisterTime(gameManager.currentLevel);
+            gameManager.RegisterCollectibles(gameManager.currentLevel);
             if (level < gameManager.levels.Length) {
                 gameManager.GenerateLevel(level);
             } else {
