@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI t_endLevelTimeDiff;
     public TextMeshProUGUI t_endLevelButtonText;
 
-    private bool playerSubmit = false;
+    private bool playerSubmit;
     private float currentLevelTimeDiff;
     private float currentLevelTime;
 
@@ -31,22 +31,18 @@ public class GameManager : MonoBehaviour {
         ui_endLevelScreen.enabled = false;
     }
 
+    private void Start() {
+        GenerateLevel(0);
+    }
+
     private void Update() {
-        playerSubmit = Input.GetButton("Submit");
-        Debug.Log(playerSubmit);
-        if (currentLevel == -1) {
-            GenerateLevel(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad1)) {
-            GenerateLevel(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad2)) {
-            GenerateLevel(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad3)) {
-            GenerateLevel(2);
+        playerSubmit = Input.GetButtonDown("Submit");
+        if (playerSubmit && (ui_endLevelScreen.enabled && !ui_endGameScreen.enabled)) {
+            NextLevel();
+            playerSubmit = false;
+        } else if (playerSubmit && (!ui_endLevelScreen.enabled && ui_endGameScreen.enabled)) {
+            RestartGame();
+            playerSubmit = false;
         }
     }
 
@@ -110,16 +106,7 @@ public class GameManager : MonoBehaviour {
         } else {
             t_endLevelButtonText.text = "NEXT";
         }
-        //     yield return StartCoroutine(WaitForKeyDown(playerSubmit));
-        //     Debug.Log("Done");
-        //     NextLevel();
-        //     yield return null;
     }
-
-    // IEnumerator WaitForKeyDown(bool done) {
-    //     while (!done)
-    //         yield return null;
-    // }
 
     public void RestartGame() {
         ShowTimerScreen();
@@ -129,7 +116,6 @@ public class GameManager : MonoBehaviour {
 
     public void NextLevel() {
         ShowTimerScreen();
-        stopWatch.ResetStopWatch();
         if (currentLevel + 1 > levels.Length - 1) {
             EndGame();
         } else {
