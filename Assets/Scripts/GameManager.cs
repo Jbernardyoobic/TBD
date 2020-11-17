@@ -26,14 +26,11 @@ public class GameManager : MonoBehaviour {
     private float currentLevelTime;
     private float currentTotalTime;
 
-    private float[] currentTimesPerLevel;
-
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
         playerData = SavingSystem.LoadRecords(playerData, levels.Length);
         ui_endGameScreen.enabled = false;
         ui_endLevelScreen.enabled = false;
-        currentTimesPerLevel = new float[levels.Length];
     }
 
     private void Start() {
@@ -69,7 +66,6 @@ public class GameManager : MonoBehaviour {
     public void RegisterTime(int level) {
         stopWatch.EndStopWatch();
         currentLevelTime = stopWatch.LevelTime;
-        currentTimesPerLevel[currentLevel] = stopWatch.LevelTime;
         if (playerData.BestTimePerLevel[level] != 0) {
             currentLevelTimeDiff = playerData.BestTimePerLevel[level] - currentLevelTime;
             playerData.BestTimePerLevel[level] = currentLevelTime < playerData.BestTimePerLevel[level] ? currentLevelTime : playerData.BestTimePerLevel[level];
@@ -82,17 +78,16 @@ public class GameManager : MonoBehaviour {
     public void EndGame() {
         ClearLevel();
         ShowEndGameScreen();
+        t_timePerLevelRecap.text = "";
 
-        currentTotalTime = currentTimesPerLevel.Sum();
-        t_timePerLevelRecap.text = "Total time: " + currentTotalTime.ToString("F2") + "s";
-
-        if (playerData.BestTotalTime > 0) {
-            TimeDiffDisplay(t_totalTimeDiff, playerData.BestTotalTime - currentTotalTime);
-        } else {
-            t_totalTimeDiff.text = "";
+        for (int i = 0; i < playerData.BestTimePerLevel.Length; i++) {
+            t_timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.BestTimePerLevel[i].ToString("F2") + "s\n\n";
         }
+        currentTotalTime = playerData.BestTimePerLevel.Sum();
+        t_timePerLevelRecap.text += "Total time: " + currentTotalTime.ToString("F2") + "s";
+        TimeDiffDisplay(t_totalTimeDiff, playerData.BestTotalTime - currentTotalTime);
 
-        playerData.BestTotalTime = playerData.BestTotalTime > currentTotalTime || playerData.BestTotalTime == -1 ? currentTotalTime : playerData.BestTotalTime;
+        playerData.BestTotalTime = playerData.BestTotalTime > currentTotalTime || playerData.BestTotalTime != -1 ? currentTotalTime : playerData.BestTotalTime;
     }
 
     public void TimeDiffDisplay(TextMeshProUGUI t_timeDiff, float currentDiff) {
