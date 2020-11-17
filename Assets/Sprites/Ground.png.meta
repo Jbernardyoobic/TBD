@@ -65,6 +65,9 @@ TextureImporter:
   - first:
       213: 2971426260718290345
     second: Ground_20
+  - first:
+      213: 4556602332822886861
+    second: Ground_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -580,7 +583,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -588,6 +591,27 @@ TextureImporter:
       bones: []
       spriteID: 9a5816ad070ac3920800000000000000
       internalID: 2971426260718290345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ground_21
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc9df960ead4c3f30800000000000000
+      internalID: 4556602332822886861
       vertices: []
       indices: 
       edges: []
