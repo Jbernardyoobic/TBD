@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI t_endLevelResume;
     public TextMeshProUGUI t_endLevelTimeDiff;
     public TextMeshProUGUI t_endLevelButtonText;
+    public TextMeshProUGUI t_totalTimeDiff;
 
     private bool playerSubmit;
     private float currentLevelTimeDiff;
     private float currentLevelTime;
+    private float currentTotalTime;
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
@@ -81,20 +83,27 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < playerData.BestTimePerLevel.Length; i++) {
             t_timePerLevelRecap.text += "Level " + (i + 1) + " : " + playerData.BestTimePerLevel[i].ToString("F2") + "s\n\n";
         }
+        currentTotalTime = playerData.BestTimePerLevel.Sum();
+        t_timePerLevelRecap.text += "Total time: " + currentTotalTime.ToString("F2") + "s";
+        TimeDiffDisplay(t_totalTimeDiff, playerData.BestTotalTime - currentTotalTime);
 
-        t_timePerLevelRecap.text += "Total time: " + playerData.BestTimePerLevel.Sum().ToString("F2") + "s";
+        playerData.BestTotalTime = playerData.BestTotalTime > currentTotalTime || playerData.BestTotalTime != -1 ? currentTotalTime : playerData.BestTotalTime;
+    }
+
+    public void TimeDiffDisplay(TextMeshProUGUI t_timeDiff, float currentDiff) {
+        t_timeDiff.text = "";
+
+        if (currentDiff != 0) {
+            t_timeDiff.color = currentDiff > 0 ? Color.green : Color.red;
+            t_timeDiff.text += currentDiff > 0 ? "-" : "+";
+            t_timeDiff.text += String.Format("{0:F3}s", Mathf.Abs(currentDiff));
+        }
     }
 
     public void EndLevel(int mapIndex) {
         ClearLevel();
         ShowEndLevelScreen();
-        t_endLevelTimeDiff.text = "";
-
-        if (currentLevelTimeDiff != 0) {
-            t_endLevelTimeDiff.color = currentLevelTimeDiff > 0 ? Color.green : Color.red;
-            t_endLevelTimeDiff.text += currentLevelTimeDiff > 0 ? "-" : "+";
-            t_endLevelTimeDiff.text += String.Format("{0:F3}s", Mathf.Abs(currentLevelTimeDiff));
-        }
+        TimeDiffDisplay(t_endLevelTimeDiff, currentLevelTimeDiff);
         t_endLevelResume.text = String.Format("Time : {0:F2}s\n\nCollectibles : {1}/{2}\n\nSecret Collectibles : {3}/1",
                                             currentLevelTime,
                                             playerData.TotalCollectiblesPerLevel[mapIndex],

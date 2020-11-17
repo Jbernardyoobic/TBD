@@ -10,6 +10,7 @@ public class PlayerData {
     int[] totalCollectiblesPerLevel;
     int[] secretCollectiblesPerLevel;
 
+    float bestTotalTime = -1;
     int currentGatheredCollectibles = 0;
     int gatheredSecretCollectibles = 0;
 
@@ -19,6 +20,7 @@ public class PlayerData {
     public int[] SecretCollectiblesPerLevel { get => secretCollectiblesPerLevel; set => secretCollectiblesPerLevel = value; }
     public int CurrentGatheredCollectibles { get => currentGatheredCollectibles; set => currentGatheredCollectibles = value; }
     public int GatheredSecretCollectibles { get => gatheredSecretCollectibles; set => gatheredSecretCollectibles = value; }
+    public float BestTotalTime { get => bestTotalTime; set => bestTotalTime = value; }
 
     public void InitiateData(int totalLevel) {
         bestTimePerLevel = new float[totalLevel];
