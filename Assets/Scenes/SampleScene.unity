@@ -440,7 +440,7 @@ MonoBehaviour:
   levels:
   - levelPrefab: {fileID: 5176335128839057830, guid: e7c5e6b2d0f63d143884d2c4ae8ed97d,
       type: 3}
-    totalCollectibles: 2
+    totalCollectibles: 11
     secretCollectibles: 1
     developerTime: 0
     mirroredLevel: 0
