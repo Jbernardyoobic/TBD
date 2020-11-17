@@ -18,7 +18,8 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private float dashPower;
 
     [SerializeField] private ParticleSystem dustFeet;
-    [SerializeField] private ParticleSystem dustBody;
+    [SerializeField] private ParticleSystem dustBodyRight;
+    [SerializeField] private ParticleSystem dustBodyLeft;
     [SerializeField] private ParticleSystem dustOnImpact;
     [SerializeField] private ParticleSystem dashParticle;
 
@@ -161,7 +162,21 @@ public class CharacterController2D : MonoBehaviour {
     }
 
     public void CreateDustOnBody() {
-        dustBody.Play();
+
+        if (isTouchingWallRight) {
+            if (m_FacingRight) {
+                dustBodyRight.Play();
+            } else {
+                dustBodyLeft.Play();
+            }
+        } else if (isTouchingWallLeft) {
+            if (!m_FacingRight) {
+                dustBodyRight.Play();
+            } else {
+                dustBodyLeft.Play();
+            }
+        }
+
     }
 
     public void CreateDustOnImpact() {
