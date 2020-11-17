@@ -404,7 +404,6 @@ GameObject:
   m_Component:
   - component: {fileID: 149179759}
   - component: {fileID: 149179760}
-  - component: {fileID: 149179761}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -458,7 +457,6 @@ MonoBehaviour:
     developerTime: 0
     mirroredLevel: 0
   stopWatch: {fileID: 955542941}
-  playerData: {fileID: 149179761}
   currentLevel: -1
   ui_endGameScreen: {fileID: 1438622004}
   ui_endLevelScreen: {fileID: 1284834619}
@@ -467,18 +465,6 @@ MonoBehaviour:
   t_endLevelResume: {fileID: 1110303304}
   t_endLevelTimeDiff: {fileID: 543662259}
   t_endLevelButtonText: {fileID: 1436693089}
---- !u!114 &149179761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149179758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 727536d4fffb2d3408c54c29e311aba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &291608462
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class CollectiblesScript : MonoBehaviour {
 
-    private PlayerData playerData;
+    private GameManager gameManager;
     public bool isSecretCollectibles;
 
     [SerializeField] ParticleSystem destroyEffect;
 
     private void Awake() {
-        playerData = GameObject.FindObjectOfType<PlayerData>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.name == "Player") {
             if (!isSecretCollectibles) {
-                playerData.CurrentGatheredCollectibles += 1;
+                gameManager.playerData.CurrentGatheredCollectibles += 1;
             } else {
-                playerData.GatheredSecretCollectibles += 1;
+                gameManager.playerData.GatheredSecretCollectibles += 1;
             }
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;

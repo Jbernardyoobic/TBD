@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
-        playerData.InitiateData(levels.Length);
+        playerData = SavingSystem.LoadRecords(playerData, levels.Length);
         ui_endGameScreen.enabled = false;
         ui_endLevelScreen.enabled = false;
     }
@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour {
         } else {
             t_endLevelButtonText.text = "NEXT";
         }
+        SavingSystem.SaveRecords(playerData);
     }
 
     public void RestartGame() {
