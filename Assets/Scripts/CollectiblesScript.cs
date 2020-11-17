@@ -7,6 +7,8 @@ public class CollectiblesScript : MonoBehaviour {
     private PlayerData playerData;
     public bool isSecretCollectibles;
 
+    [SerializeField] ParticleSystem destroyEffect;
+
     private void Awake() {
         playerData = GameObject.FindObjectOfType<PlayerData>();
     }
@@ -18,7 +20,15 @@ public class CollectiblesScript : MonoBehaviour {
             } else {
                 playerData.GatheredSecretCollectibles += 1;
             }
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            destroyEffect.Play();
+            StartCoroutine(DestroyGameObject());
         }
+    }
+
+    IEnumerator DestroyGameObject() {
+        yield return new WaitUntil(() => !destroyEffect.isPlaying);
+        Destroy(gameObject);
     }
 }
