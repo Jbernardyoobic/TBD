@@ -438,13 +438,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - levelPrefab: {fileID: 5176335128839057830, guid: e7c5e6b2d0f63d143884d2c4ae8ed97d,
+  - levelPrefab: {fileID: 4071297773367170300, guid: 49a259f705aa9f3489126a26beefaa07,
       type: 3}
     totalCollectibles: 11
     secretCollectibles: 1
     developerTime: 0
     mirroredLevel: 0
-  - levelPrefab: {fileID: 7176577536057005673, guid: ea744e8caad006f4f86afbaf7fe8e4ee,
+  - levelPrefab: {fileID: 5176335128839057830, guid: e7c5e6b2d0f63d143884d2c4ae8ed97d,
       type: 3}
     totalCollectibles: 0
     secretCollectibles: 0
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
   m_Name: 
@@ -863,10 +863,10 @@ MonoBehaviour:
   m_AssetsPPU: 16
   m_RefResolutionX: 426
   m_RefResolutionY: 240
-  m_UpscaleRT: 1
-  m_PixelSnapping: 1
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
   m_CropFrameX: 0
-  m_CropFrameY: 1
+  m_CropFrameY: 0
   m_StretchFill: 0
 --- !u!20 &519420031
 Camera:
@@ -895,7 +895,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1673,7 +1673,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 17
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
@@ -2652,10 +2652,10 @@ RectTransform:
   m_Father: {fileID: 955542940}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.869995, y: 66.86}
-  m_SizeDelta: {x: 66.12485, y: 16.276123}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -120, y: -16}
+  m_SizeDelta: {x: 66, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760237035
 MonoBehaviour:
@@ -2673,7 +2673,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
