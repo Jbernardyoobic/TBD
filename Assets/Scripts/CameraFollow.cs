@@ -16,6 +16,7 @@ public class CameraFollow : MonoBehaviour {
             Vector3 smoothedPostion = Vector3.Lerp(transform.position, newPos, smoothSpeed);
             transform.position = smoothedPostion;
         } catch (NullReferenceException ex) {
+            Debug.Log(ex);
             player = gameObject.transform;
         }
     }
