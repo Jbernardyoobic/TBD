@@ -458,6 +458,12 @@ MonoBehaviour:
     secretCollectibles: 1
     developerTime: 0
     mirroredLevel: 0
+  - levelPrefab: {fileID: 5195844206312161241, guid: 5d7da223c470b3548acf2a60ee22198f,
+      type: 3}
+    totalCollectibles: 8
+    secretCollectibles: 1
+    developerTime: 0
+    mirroredLevel: 0
   stopWatch: {fileID: 955542941}
   currentLevel: -1
   ui_endGameScreen: {fileID: 1438622004}
