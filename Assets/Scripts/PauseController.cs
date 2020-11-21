@@ -12,10 +12,8 @@ public class PauseController : MonoBehaviour {
     void Update() {
         if (Input.GetButtonDown("Pause")) {
             if (Time.timeScale == 1) {
-                Time.timeScale = 0;
                 showPaused();
             } else if (Time.timeScale == 0) {
-                Time.timeScale = 1;
                 hidePaused();
             }
         }
@@ -23,9 +21,11 @@ public class PauseController : MonoBehaviour {
 
     public void showPaused() {
         pauseObjects.enabled = true;
+        Time.timeScale = 0;
     }
 
     public void hidePaused() {
         pauseObjects.enabled = false;
+        Time.timeScale = 1;
     }
 }
