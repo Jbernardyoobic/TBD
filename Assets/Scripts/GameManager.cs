@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
     public void PlayerDeath(GameObject player, int mapIndex) {
         CharacterController2D controller = player.GetComponent<CharacterController2D>();
         controller.CreateDeathEffect();
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         player.GetComponent<SpriteRenderer>().enabled = false;
         ui_deathScreen.enabled = true;
     }
