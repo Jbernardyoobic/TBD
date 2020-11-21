@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour {
     [SerializeField] Canvas pauseObjects;
@@ -27,5 +28,10 @@ public class PauseController : MonoBehaviour {
     public void hidePaused() {
         pauseObjects.enabled = false;
         Time.timeScale = 1;
+    }
+
+    public void QuitGame() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
     }
 }
