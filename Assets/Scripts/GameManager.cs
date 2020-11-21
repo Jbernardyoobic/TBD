@@ -71,13 +71,7 @@ public class GameManager : MonoBehaviour {
             Instantiate(levels[currentLevel].levelPrefab, gameObject.transform.position, Quaternion.identity, transform);
         }
         playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
-
-        if (levels[mapIndex].mirroredLevel) {
-            Instantiate(playerPrefab, playerSpawnPoint.position, new Quaternion(0f, -180f, 0f, 0f), transform);
-        } else {
-            Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity, transform);
-        }
-
+        Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity, transform);
         playerData.CurrentGatheredCollectibles = 0;
         playerData.GatheredSecretCollectibles = 0;
         stopWatch.ResetStopWatch();
