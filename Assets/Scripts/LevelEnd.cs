@@ -11,7 +11,7 @@ public class LevelEnd : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.name == "Player") {
+        if (col.tag == "Player") {
             int level = gameManager.currentLevel + 1;
             gameManager.RegisterTime(gameManager.currentLevel);
             gameManager.RegisterCollectibles(gameManager.currentLevel);

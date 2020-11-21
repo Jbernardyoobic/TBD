@@ -187,6 +187,10 @@ public class CharacterController2D : MonoBehaviour {
     public void CreateDashParticle() {
         dashParticle.Play();
     }
+
+    public void CreateDeathEffect() {
+        deathParticle.Play();
+    }
 }
 
 public enum DashState {

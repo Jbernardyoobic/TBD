@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Canvas ui_endGameScreen;
     public Canvas ui_endLevelScreen;
     public Canvas ui_timerScreen;
+    public Canvas ui_deathScreen;
     public TextMeshProUGUI t_timePerLevelRecap;
     public TextMeshProUGUI t_endLevelResume;
     public TextMeshProUGUI t_endLevelTimeDiff;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour {
         playerData = SavingSystem.LoadRecords(playerData, levels.Length);
         ui_endGameScreen.enabled = false;
         ui_endLevelScreen.enabled = false;
+        ui_deathScreen.enabled = false;
         currentTimesPerLevel = new float[levels.Length];
     }
 
@@ -49,12 +51,22 @@ public class GameManager : MonoBehaviour {
         playerSubmit = Input.GetButtonDown("Submit");
         if (playerSubmit && (ui_endLevelScreen.enabled && !ui_endGameScreen.enabled)) {
             NextLevel();
-            playerSubmit = false;
         } else if (playerSubmit && (!ui_endLevelScreen.enabled && ui_endGameScreen.enabled)) {
             RestartGame();
-            playerSubmit = false;
+        } else if (playerSubmit && ui_deathScreen.enabled) {
+            ui_deathScreen.enabled = false;
+            RestartGame();
         }
     }
+
+    public void PlayerDeath(GameObject player, int mapIndex) {
+        CharacterController2D controller = player.GetComponent<CharacterController2D>();
+        controller.CreateDeathEffect();
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        player.GetComponent<SpriteRenderer>().enabled = false;
+        ui_deathScreen.enabled = true;
+    }
+
 
     void ClearLevel() {
         foreach (Transform child in transform) {

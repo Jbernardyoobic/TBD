@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9729270583658146}
   - component: {fileID: 1325221935590220688}
   - component: {fileID: 3124041930563581258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DustParticleOnImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 8010255093033893581}
   - component: {fileID: 2346299619724180547}
   - component: {fileID: 1475926374778074467}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DustParticleOnFeet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9635,7 +9635,7 @@ GameObject:
   - component: {fileID: 2700584119803637146}
   - component: {fileID: 8895937807759026006}
   - component: {fileID: 6433965723473655602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DustParticleOnBodyRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14447,7 +14447,7 @@ GameObject:
   - component: {fileID: 8792683604719050829}
   - component: {fileID: 7094182893328002929}
   - component: {fileID: 1566725470693807665}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DeathParticleEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18106,8 +18106,8 @@ ParticleSystem:
   CollisionModule:
     enabled: 1
     serializedVersion: 3
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -18282,7 +18282,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 279
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -19280,7 +19280,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -19317,7 +19317,7 @@ GameObject:
   - component: {fileID: 6603254162913727804}
   - component: {fileID: 4433080394180344071}
   - component: {fileID: 5438191967069312238}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DustParticleOnBodyLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24129,7 +24129,7 @@ GameObject:
   - component: {fileID: 263915138459223192}
   - component: {fileID: 6150458274694555307}
   - component: {fileID: 1336015089399754088}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DashParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28939,7 +28939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9140867600476722280}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -28975,7 +28975,7 @@ GameObject:
   - component: {fileID: 9140867600583730070}
   - component: {fileID: 9140867600583730069}
   - component: {fileID: 9140867600583730068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -29142,7 +29142,7 @@ MonoBehaviour:
   - {x: -0.25367832, y: -0.18748641, z: 0}
   m_ShapePathHash: -195200123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 43394
+  m_InstanceId: 89016
 --- !u!114 &9140867600583730069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29175,6 +29175,7 @@ MonoBehaviour:
   dustBodyLeft: {fileID: 4433080394180344071}
   dustOnImpact: {fileID: 1325221935590220688}
   dashParticle: {fileID: 6150458274694555307}
+  deathParticle: {fileID: 7094182893328002929}
 --- !u!114 &9140867600583730068
 MonoBehaviour:
   m_ObjectHideFlags: 0
