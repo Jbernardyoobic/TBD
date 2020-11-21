@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
             RestartGame();
         } else if (playerSubmit && ui_deathScreen.enabled) {
             ui_deathScreen.enabled = false;
-            RestartGame();
+            PreviousLevel();
         }
     }
 
@@ -65,6 +65,18 @@ public class GameManager : MonoBehaviour {
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         player.GetComponent<SpriteRenderer>().enabled = false;
         ui_deathScreen.enabled = true;
+    }
+
+    public void PreviousLevel() {
+        ShowTimerScreen();
+        int levelIndex = currentLevel - 1;
+        if (levelIndex < 0) {
+            GenerateLevel(0);
+        } else if (levelIndex == 0) {
+            GenerateLevel(currentLevel);
+        } else {
+            GenerateLevel(levelIndex);
+        }
     }
 
 
