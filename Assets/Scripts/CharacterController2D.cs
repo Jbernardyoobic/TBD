@@ -22,6 +22,7 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private ParticleSystem dustBodyLeft;
     [SerializeField] private ParticleSystem dustOnImpact;
     [SerializeField] private ParticleSystem dashParticle;
+    [SerializeField] private ParticleSystem deathParticle;
 
 
 

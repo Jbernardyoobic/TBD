@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.ComponentModel;
+using System.Collections;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,6 +8,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour {
 
+    public GameObject playerPrefab;
     public LevelComponent[] levels;
     public TimerHandler stopWatch;
     public PlayerData playerData;
@@ -21,12 +23,15 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI t_endLevelButtonText;
     public TextMeshProUGUI t_totalTimeDiff;
 
+    private Transform playerSpawnPoint;
+
     private bool playerSubmit;
     private float currentLevelTimeDiff;
     private float currentLevelTime;
     private float currentTotalTime;
 
     private float[] currentTimesPerLevel;
+
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
@@ -65,6 +70,14 @@ public class GameManager : MonoBehaviour {
         } else {
             Instantiate(levels[currentLevel].levelPrefab, gameObject.transform.position, Quaternion.identity, transform);
         }
+        playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+
+        if (levels[mapIndex].mirroredLevel) {
+            Instantiate(playerPrefab, playerSpawnPoint.position, new Quaternion(0f, -180f, 0f, 0f), transform);
+        } else {
+            Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity, transform);
+        }
+
         playerData.CurrentGatheredCollectibles = 0;
         playerData.GatheredSecretCollectibles = 0;
         stopWatch.ResetStopWatch();

@@ -437,20 +437,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9204ce0807344bb458db8c2ec8ecc4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 9140867600583730067, guid: 8a20b30633ba6914b988f693745d11da,
+    type: 3}
   levels:
-  - levelPrefab: {fileID: 4071297773367170300, guid: 49a259f705aa9f3489126a26beefaa07,
-      type: 3}
-    totalCollectibles: 11
-    secretCollectibles: 1
-    developerTime: 0
-    mirroredLevel: 0
-  - levelPrefab: {fileID: 5176335128839057830, guid: e7c5e6b2d0f63d143884d2c4ae8ed97d,
-      type: 3}
-    totalCollectibles: 0
-    secretCollectibles: 0
-    developerTime: 0
-    mirroredLevel: 0
-  - levelPrefab: {fileID: 5195844206312161241, guid: 5d7da223c470b3548acf2a60ee22198f,
+  - levelPrefab: {fileID: 7176577536057005673, guid: ea744e8caad006f4f86afbaf7fe8e4ee,
       type: 3}
     totalCollectibles: 0
     secretCollectibles: 0
