@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU DIED MOFO
+  m_text: YOU DIED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21bd33bcad681e74383dab69163b381c, type: 2}
   m_sharedMaterial: {fileID: 4350677258408956024, guid: 21bd33bcad681e74383dab69163b381c,
