@@ -4,14 +4,13 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour {
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
-    [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private Vector2 groundCheckSize;
     [SerializeField] private float fallMultiplier;
-    [SerializeField] private float lowFallMultiplier;
     [SerializeField] private Vector2 wallCheckPos;
     [SerializeField] private Vector2 wallCheckSize;
+    [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
     [SerializeField] private float m_WallJumpForce;
     [SerializeField] private float wallSlideSpeed;
     [SerializeField] private float m_JumpFromWallForce;
@@ -38,6 +37,7 @@ public class CharacterController2D : MonoBehaviour {
     private bool isTouchingWallLeft;
     private int isTouchingLeftOrRight;
     private bool canWallJump;
+    private bool hasWallJump;
 
     private DashState dashState = DashState.Ready;
     private Vector2 savedVelocity;
@@ -59,6 +59,7 @@ public class CharacterController2D : MonoBehaviour {
 
         if (isTouchingGround) {
             m_Grounded = true;
+            hasWallJump = false;
         }
 
         if (isTouchingWallLeft) {
@@ -67,8 +68,9 @@ public class CharacterController2D : MonoBehaviour {
             isTouchingLeftOrRight = -1;
         }
 
-        if ((isTouchingWallLeft || isTouchingWallRight) && !m_Grounded) {
+        if ((isTouchingWallLeft || isTouchingWallRight)) {
             canWallJump = true;
+            hasWallJump = false;
         } else {
             canWallJump = false;
         }
@@ -132,19 +134,18 @@ public class CharacterController2D : MonoBehaviour {
             // Add a vertical force to the player.
             CreateDustOnFeet();
             m_Grounded = false;
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce * Time.deltaTime);
         }
 
         //Wall Jump
         if (!m_Grounded && jump && canWallJump) {
             m_Rigidbody2D.velocity = new Vector2(isTouchingLeftOrRight * m_JumpFromWallForce * Time.deltaTime, m_WallJumpForce * Time.deltaTime);
+            hasWallJump = true;
         }
 
-        //Accelerate the fall of the player to get a better jump feeling
-        if (m_Rigidbody2D.velocity.y < 0) {
+        //Accelerate the fall of the player
+        if (m_Rigidbody2D.velocity.y < 0 || (m_Rigidbody2D.velocity.y > 0 && releasedJumpButton) || hasWallJump && !releasedJumpButton || dashState == DashState.Cooldown) {
             m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (m_Rigidbody2D.velocity.y > 0 && releasedJumpButton) {
-            m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (lowFallMultiplier - 1) * Time.deltaTime;
         }
 
         updateDash(dash);

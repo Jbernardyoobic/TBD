@@ -29156,19 +29156,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSmoothing: 0.05
-  m_JumpForce: 250
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
   m_GroundCheck: {fileID: 9140867600476722280}
   groundCheckSize: {x: 0.51, y: 0.12}
   fallMultiplier: 4
-  lowFallMultiplier: 4
   wallCheckPos: {x: 0.32, y: 0.14}
   wallCheckSize: {x: 0.14, y: 0.47}
-  m_WallJumpForce: 325
+  m_JumpForce: 250
+  m_WallJumpForce: 600
   wallSlideSpeed: 0.5
-  m_JumpFromWallForce: 500
+  m_JumpFromWallForce: 600
   dashPower: 300
   dustFeet: {fileID: 2346299619724180547}
   dustBodyRight: {fileID: 8895937807759026006}
