@@ -7,7 +7,8 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private Vector2 groundCheckSize;
-    [SerializeField] private float fallMultiplier;
+    [SerializeField] private float jumpFallMultiplier;
+    [SerializeField] private float wallJumpFallMultiplier;
     [SerializeField] private Vector2 wallCheckPos;
     [SerializeField] private Vector2 wallCheckSize;
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
@@ -143,9 +144,16 @@ public class CharacterController2D : MonoBehaviour {
             hasWallJump = true;
         }
 
-        //Accelerate the fall of the player
-        if (m_Rigidbody2D.velocity.y < 0 || (m_Rigidbody2D.velocity.y > 0 && releasedJumpButton) || hasWallJump && !releasedJumpButton || dashState == DashState.Cooldown) {
-            m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        //Accelerate the fall of the player after a jump or dash
+        if (m_Rigidbody2D.velocity.y < 0 || (m_Rigidbody2D.velocity.y > 0 && releasedJumpButton) || dashState == DashState.Cooldown && !hasWallJump) {
+            m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (jumpFallMultiplier - 1) * Time.deltaTime;
+        }
+
+        //Accelerate the fall of the player after a wall jump
+        if (hasWallJump && releasedJumpButton) {
+            m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (wallJumpFallMultiplier) * Time.deltaTime;
+        } else if (hasWallJump && m_Rigidbody2D.velocity.y > 0 && !releasedJumpButton) {
+            m_Rigidbody2D.velocity += Vector2.up * Physics.gravity.y * (wallJumpFallMultiplier - 1) * Time.deltaTime;
         }
 
         updateDash(dash);

@@ -29161,7 +29161,8 @@ MonoBehaviour:
     m_Bits: 256
   m_GroundCheck: {fileID: 9140867600476722280}
   groundCheckSize: {x: 0.51, y: 0.12}
-  fallMultiplier: 4
+  jumpFallMultiplier: 4
+  wallJumpFallMultiplier: 4
   wallCheckPos: {x: 0.32, y: 0.14}
   wallCheckSize: {x: 0.14, y: 0.47}
   m_JumpForce: 250
