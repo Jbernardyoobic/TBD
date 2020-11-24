@@ -473,7 +473,6 @@ MonoBehaviour:
   t_timePerLevelRecap: {fileID: 1018621588}
   t_endLevelResume: {fileID: 1110303304}
   t_endLevelButtonText: {fileID: 1436693089}
-  t_totalTimeDiff: {fileID: 0}
 --- !u!1 &291608462
 GameObject:
   m_ObjectHideFlags: 0
