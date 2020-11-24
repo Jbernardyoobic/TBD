@@ -28975,6 +28975,7 @@ GameObject:
   - component: {fileID: 9140867600583730070}
   - component: {fileID: 9140867600583730069}
   - component: {fileID: 9140867600583730068}
+  - component: {fileID: 326942261010101201}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -28990,7 +28991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9140867600583730067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.93, y: 0.86, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9140867600476722280}
@@ -29043,7 +29044,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: c01ff1979aa823a4eb07cd02d4dc4745, type: 3}
+  m_Sprite: {fileID: -2311659948842064771, guid: c01ff1979aa823a4eb07cd02d4dc4745,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -29142,7 +29144,7 @@ MonoBehaviour:
   - {x: -0.25367832, y: -0.18748641, z: 0}
   m_ShapePathHash: -195200123
   m_Mesh: {fileID: 0}
-  m_InstanceId: 89016
+  m_InstanceId: 30386
 --- !u!114 &9140867600583730069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29176,6 +29178,7 @@ MonoBehaviour:
   dustOnImpact: {fileID: 1325221935590220688}
   dashParticle: {fileID: 6150458274694555307}
   deathParticle: {fileID: 7094182893328002929}
+  animator: {fileID: 326942261010101201}
 --- !u!114 &9140867600583730068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29190,3 +29193,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller2D: {fileID: 9140867600583730069}
   speed: 35
+--- !u!95 &326942261010101201
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140867600583730067}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71fe61c03e843df45b5a1cdadbfcbcbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -24,6 +24,8 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] private ParticleSystem dashParticle;
     [SerializeField] private ParticleSystem deathParticle;
 
+    [SerializeField] private Animator animator;
+
 
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -81,6 +83,8 @@ public class CharacterController2D : MonoBehaviour {
         }
 
         wasGrouned = m_Grounded;
+        animator.SetBool("Grounded", m_Grounded);
+        animator.SetFloat("Speed", Mathf.Abs(m_Rigidbody2D.velocity.x));
     }
 
     private void updateDash(bool isDashKeyDown) {
