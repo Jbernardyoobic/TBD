@@ -84,7 +84,9 @@ public class CharacterController2D : MonoBehaviour {
 
         wasGrouned = m_Grounded;
         animator.SetBool("Grounded", m_Grounded);
+        animator.SetBool("Dash", dashState == DashState.Cooldown);
         animator.SetFloat("Speed", Mathf.Abs(m_Rigidbody2D.velocity.x));
+        animator.SetFloat("FallSpeed", Mathf.Abs(m_Rigidbody2D.velocity.y));
     }
 
     private void updateDash(bool isDashKeyDown) {
