@@ -114,6 +114,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+
+    public void TimeDiffDisplay(TextMeshProUGUI t_timeDiff, float currentDiff) {
+        t_timeDiff.text = "";
+
+        if (currentDiff != 0) {
+            t_timeDiff.color = currentDiff > 0 ? Color.green : Color.red;
+            t_timeDiff.text += currentDiff > 0 ? "-" : "+";
+            t_timeDiff.text += String.Format("{0:F3}s", Mathf.Abs(currentDiff));
+        }
+    }
+
     public void EndGame() {
         ClearLevel();
         ShowEndGameScreen();
@@ -130,21 +141,11 @@ public class GameManager : MonoBehaviour {
         playerData.BestTotalTime = playerData.BestTotalTime > currentTotalTime || playerData.BestTotalTime == -1 ? currentTotalTime : playerData.BestTotalTime;
     }
 
-    public void TimeDiffDisplay(TextMeshProUGUI t_timeDiff, float currentDiff) {
-        t_timeDiff.text = "";
-
-        if (currentDiff != 0) {
-            t_timeDiff.color = currentDiff > 0 ? Color.green : Color.red;
-            t_timeDiff.text += currentDiff > 0 ? "-" : "+";
-            t_timeDiff.text += String.Format("{0:F3}s", Mathf.Abs(currentDiff));
-        }
-    }
-
     public void EndLevel(int mapIndex) {
         ClearLevel();
         ShowEndLevelScreen();
         TimeDiffDisplay(t_endLevelTimeDiff, currentLevelTimeDiff);
-        t_endLevelResume.text = String.Format("Time : {0:F2}s\n\nCollectibles : {1}/{2}\n\nSecret Collectibles : {3}/1",
+        t_endLevelResume.text = String.Format("Time : {0:F2}s\n\n     : {1}/{2}\n\n     : {3}/1",
                                             currentLevelTime,
                                             playerData.TotalCollectiblesPerLevel[mapIndex],
                                             levels[mapIndex].totalCollectibles,
