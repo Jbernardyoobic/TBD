@@ -20,9 +20,7 @@ public class GameManager : MonoBehaviour {
     public Canvas ui_deathScreen;
     public TextMeshProUGUI t_timePerLevelRecap;
     public TextMeshProUGUI t_endLevelResume;
-    public TextMeshProUGUI t_endLevelTimeDiff;
     public TextMeshProUGUI t_endLevelButtonText;
-    public TextMeshProUGUI t_totalTimeDiff;
 
     private Transform playerSpawnPoint;
 
@@ -115,14 +113,14 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    public void TimeDiffDisplay(TextMeshProUGUI t_timeDiff, float currentDiff) {
-        t_timeDiff.text = "";
-
-        if (currentDiff != 0) {
-            t_timeDiff.color = currentDiff > 0 ? Color.green : Color.red;
-            t_timeDiff.text += currentDiff > 0 ? "-" : "+";
-            t_timeDiff.text += String.Format("{0:F3}s", Mathf.Abs(currentDiff));
+    public string TimeDiffDisplay(float currentDiff) {
+        string text = "";
+        if (currentDiff > 0) {
+            text += String.Format(" <color=green>-{0:F3}s</color>", currentDiff);
+        } else {
+            text += String.Format(" <color=red>+{0:F3}s</color>", Mathf.Abs(currentDiff));
         }
+        return text;
     }
 
     public void EndGame() {
@@ -130,12 +128,11 @@ public class GameManager : MonoBehaviour {
         ShowEndGameScreen();
 
         currentTotalTime = currentTimesPerLevel.Sum();
+        float timeDiff = playerData.BestTotalTime - currentTotalTime;
         t_timePerLevelRecap.text = "Total time: " + currentTotalTime.ToString("F2") + "s";
 
         if (playerData.BestTotalTime > 0) {
-            TimeDiffDisplay(t_totalTimeDiff, playerData.BestTotalTime - currentTotalTime);
-        } else {
-            t_totalTimeDiff.text = "";
+            t_timePerLevelRecap.text += TimeDiffDisplay(timeDiff);
         }
 
         playerData.BestTotalTime = playerData.BestTotalTime > currentTotalTime || playerData.BestTotalTime == -1 ? currentTotalTime : playerData.BestTotalTime;
@@ -144,9 +141,12 @@ public class GameManager : MonoBehaviour {
     public void EndLevel(int mapIndex) {
         ClearLevel();
         ShowEndLevelScreen();
-        TimeDiffDisplay(t_endLevelTimeDiff, currentLevelTimeDiff);
-        t_endLevelResume.text = String.Format("Time : {0:F2}s\n\n     : {1}/{2}\n\n     : {3}/1",
-                                            currentLevelTime,
+
+        t_endLevelResume.text = String.Format("Time : {0:F2}s", currentLevelTime);
+
+        t_endLevelResume.text += TimeDiffDisplay(currentLevelTimeDiff);
+
+        t_endLevelResume.text += String.Format("\n\n     : {0}/{1}\n\n     : {2}/1",
                                             playerData.TotalCollectiblesPerLevel[mapIndex],
                                             levels[mapIndex].totalCollectibles,
                                             playerData.SecretCollectiblesPerLevel[mapIndex]);
