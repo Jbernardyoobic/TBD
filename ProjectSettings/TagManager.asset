@@ -8,6 +8,8 @@ TagManager:
   - LevelEnd
   - GoldNugget
   - SpawnPoint
+  - Options
+  - MainMenu
   layers:
   - Default
   - TransparentFX
