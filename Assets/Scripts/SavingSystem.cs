@@ -23,6 +23,9 @@ public static class SavingSystem {
             return data;
         } else {
             Debug.Log("Save file not found.");
+            if (defaultData == null) {
+                defaultData = new PlayerData();
+            }
             defaultData.InitiateData(totalLevel);
             return defaultData;
         }

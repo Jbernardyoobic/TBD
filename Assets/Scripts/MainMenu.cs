@@ -11,7 +11,10 @@ public class MainMenu : MonoBehaviour {
     public Canvas optionsMenu;
     public Canvas levelSelectionMenu;
 
+    private PlayerData playerData;
+
     void Start() {
+        playerData = SavingSystem.LoadRecords(playerData, 4);
         mainMenu.enabled = true;
         optionsMenu.enabled = false;
         levelSelectionMenu.enabled = false;
@@ -38,6 +41,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void OnClickDisplayLevelSelection() {
+        CheckIfLevelIsUnlocked();
         mainMenu.enabled = false;
         levelSelectionMenu.enabled = true;
     }
@@ -45,5 +49,19 @@ public class MainMenu : MonoBehaviour {
     public void OnClickSelectLevel(int levelIndex) {
         PlayerPrefs.SetInt("LevelIndex", levelIndex);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+    }
+
+    public void OnClickClearSave() {
+        SavingSystem.CleanSave();
+        playerData = SavingSystem.LoadRecords(playerData, 4);
+    }
+
+    private void CheckIfLevelIsUnlocked() {
+        GameObject[] levelSelectionButtons = GameObject.FindGameObjectsWithTag("LevelSelection");
+        for (int index = 0; index < levelSelectionButtons.Length; index++) {
+            if (playerData.BestTimePerLevel[index] == 0) {
+                levelSelectionButtons[index].GetComponent<Button>().interactable = false;
+            }
+        }
     }
 }
