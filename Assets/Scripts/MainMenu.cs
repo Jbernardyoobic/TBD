@@ -9,27 +9,41 @@ public class MainMenu : MonoBehaviour {
 
     public Canvas mainMenu;
     public Canvas optionsMenu;
+    public Canvas levelSelectionMenu;
 
     void Start() {
         mainMenu.enabled = true;
         optionsMenu.enabled = false;
+        levelSelectionMenu.enabled = false;
     }
 
-    public void onPlayClick() {
+    public void OnClickPlayGames() {
+        PlayerPrefs.SetInt("LevelIndex", -1);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 
-    public void onOptionsClick() {
+    public void OnClickDisplayOptionMenu() {
         mainMenu.enabled = false;
         optionsMenu.enabled = true;
     }
 
-    public void onQuitOptionsClick() {
+    public void OnClickReturnToMainMenu() {
         optionsMenu.enabled = false;
+        levelSelectionMenu.enabled = false;
         mainMenu.enabled = true;
     }
 
-    public void onQuitClick() {
+    public void OnClickQuitGames() {
         Application.Quit();
+    }
+
+    public void OnClickDisplayLevelSelection() {
+        mainMenu.enabled = false;
+        levelSelectionMenu.enabled = true;
+    }
+
+    public void OnClickSelectLevel(int levelIndex) {
+        PlayerPrefs.SetInt("LevelIndex", levelIndex);
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }

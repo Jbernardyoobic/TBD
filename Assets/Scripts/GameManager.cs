@@ -42,7 +42,12 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        GenerateLevel(0);
+        currentLevel = PlayerPrefs.GetInt("LevelIndex");
+        if (currentLevel == -1) {
+            GenerateLevel(0);
+        } else {
+            GenerateLevel(currentLevel);
+        }
     }
 
     private void Update() {
