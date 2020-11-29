@@ -100,7 +100,7 @@ public class CharacterController2D : MonoBehaviour {
                 }
                 break;
             case DashState.Cooldown:
-                if (m_Grounded) {
+                if (m_Grounded || isTouchingWallLeft || isTouchingWallRight) {
                     dashState = DashState.Ready;
                 }
                 break;
