@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
 
     private float[] currentTimesPerLevel;
 
+    private string selectedLevelMode;
+
 
     private void Awake() {
         stopWatch = GameObject.FindObjectOfType<TimerHandler>();
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         currentLevel = PlayerPrefs.GetInt("LevelIndex");
+        selectedLevelMode = PlayerPrefs.GetString("selectedMode");
         if (currentLevel == -1) {
             GenerateLevel(0);
         } else {
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour {
         int levelIndex = currentLevel - 1;
         if (levelIndex < 0) {
             GenerateLevel(0);
-        } else if (levelIndex == 0) {
+        } else if (levelIndex == 0 || selectedLevelMode == "loop") {
             GenerateLevel(currentLevel);
         } else {
             GenerateLevel(levelIndex);
@@ -149,7 +152,10 @@ public class GameManager : MonoBehaviour {
 
         t_endLevelResume.text = String.Format("Time : {0:F2}s", currentLevelTime);
 
-        t_endLevelResume.text += TimeDiffDisplay(currentLevelTimeDiff);
+        if (currentLevelTimeDiff != 0) {
+            t_endLevelResume.text += TimeDiffDisplay(currentLevelTimeDiff);
+        }
+
 
         t_endLevelResume.text += String.Format("\n\n     : {0}/{1}\n\n     : {2}/1",
                                             playerData.TotalCollectiblesPerLevel[mapIndex],
@@ -158,6 +164,8 @@ public class GameManager : MonoBehaviour {
 
         if (mapIndex + 1 > levels.Length - 1) {
             t_endLevelButtonText.text = "End Game";
+        } else if (selectedLevelMode == "loop") {
+            t_endLevelButtonText.text = "REDO";
         } else {
             t_endLevelButtonText.text = "NEXT";
         }
@@ -174,6 +182,8 @@ public class GameManager : MonoBehaviour {
         ShowTimerScreen();
         if (currentLevel + 1 > levels.Length - 1) {
             EndGame();
+        } else if (selectedLevelMode == "loop") {
+            GenerateLevel(currentLevel);
         } else {
             GenerateLevel(currentLevel + 1);
         }
