@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 using TMPro;
 
 public class MainMenu : MonoBehaviour {
@@ -14,12 +15,16 @@ public class MainMenu : MonoBehaviour {
     public Canvas levelSelectionMenu;
     public Canvas statsMenu;
 
+    public AudioMixer mixer;
+    public Slider volumeSlider;
+
     public TextMeshProUGUI textStats;
 
     private PlayerData playerData;
 
     void Start() {
         playerData = SavingSystem.LoadRecords(playerData, 4);
+        volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         mainMenu.enabled = true;
         optionsMenu.enabled = false;
         levelSelectionMenu.enabled = false;
@@ -76,6 +81,11 @@ public class MainMenu : MonoBehaviour {
                                         playerData.TotalCollectiblesPerLevel[index],
                                         playerData.SecretCollectiblesPerLevel[index]);
         }
+    }
+
+    public void SetLevel(float sliderValue) {
+        mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
+        PlayerPrefs.SetFloat("MusicVolume", sliderValue);
     }
 
     private void CheckIfLevelIsUnlocked() {
