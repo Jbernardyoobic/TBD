@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour {
     public Canvas ui_endLevelScreen;
     public Canvas ui_timerScreen;
     public Canvas ui_deathScreen;
+    public Canvas ui_pauseScreen;
     public TextMeshProUGUI t_timePerLevelRecap;
     public TextMeshProUGUI t_endLevelResume;
     public TextMeshProUGUI t_endLevelButtonText;
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour {
         ui_endGameScreen.enabled = false;
         ui_endLevelScreen.enabled = false;
         ui_deathScreen.enabled = false;
+        HidePauseScreen();
         currentTimesPerLevel = new float[levels.Length];
     }
 
@@ -62,6 +65,14 @@ public class GameManager : MonoBehaviour {
         } else if (playerSubmit && ui_deathScreen.enabled) {
             ui_deathScreen.enabled = false;
             PreviousLevel();
+        }
+
+        if (Input.GetButtonDown("Pause")) {
+            if (Time.timeScale == 1) {
+                ShowPauseScreen();
+            } else if (Time.timeScale == 0) {
+                HidePauseScreen();
+            }
         }
     }
 
@@ -210,5 +221,20 @@ public class GameManager : MonoBehaviour {
     private void ShowEndGameScreen() {
         ui_endGameScreen.enabled = true;
         ui_timerScreen.enabled = false;
+    }
+
+    public void ShowPauseScreen() {
+        ui_pauseScreen.enabled = true;
+        Time.timeScale = 0;
+    }
+
+    public void HidePauseScreen() {
+        ui_pauseScreen.enabled = false;
+        Time.timeScale = 1;
+    }
+
+    public void QuitGame() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
     }
 }
