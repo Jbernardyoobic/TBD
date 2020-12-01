@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour {
                                             levels[mapIndex].totalCollectibles,
                                             playerData.SecretCollectiblesPerLevel[mapIndex]);
 
-        if (mapIndex + 1 > levels.Length - 1) {
+        if (mapIndex + 1 > levels.Length - 1 && selectedLevelMode != "loop") {
             t_endLevelButtonText.text = "End Game";
         } else if (selectedLevelMode == "loop") {
             t_endLevelButtonText.text = "REDO";
@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour {
 
     public void NextLevel() {
         ShowTimerScreen();
-        if (currentLevel + 1 > levels.Length - 1) {
+        if (currentLevel + 1 > levels.Length - 1 && selectedLevelMode != "loop") {
             EndGame();
         } else if (selectedLevelMode == "loop") {
             GenerateLevel(currentLevel);
