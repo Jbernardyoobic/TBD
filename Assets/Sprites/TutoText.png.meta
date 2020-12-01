@@ -1,0 +1,346 @@
+fileFormatVersion: 2
+guid: b648988e0202b9741b91a39dc805e845
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4309641149748274023
+    second: TutoText_0
+  - first:
+      213: 1909521166703141276
+    second: TutoText_1
+  - first:
+      213: -7189890530566211581
+    second: TutoText_2
+  - first:
+      213: -6522359074387924931
+    second: TutoText_3
+  - first:
+      213: 9212697755808663650
+    second: TutoText_4
+  - first:
+      213: -8517860377133354232
+    second: TutoText_5
+  - first:
+      213: -8067106557952114994
+    second: TutoText_6
+  - first:
+      213: 6037621488022369641
+    second: TutoText_7
+  - first:
+      213: 607317891345043240
+    second: TutoText_8
+  - first:
+      213: 5351498166101186953
+    second: TutoText_9
+  - first:
+      213: 149126259541252361
+    second: TutoText_10
+  - first:
+      213: 3956777826645820590
+    second: TutoText_11
+  - first:
+      213: 1776066742725612487
+    second: TutoText_12
+  - first:
+      213: -8688456287321830756
+    second: TutoText_13
+  - first:
+      213: 1707233847950425070
+    second: TutoText_14
+  - first:
+      213: 8327663704579898402
+    second: TutoText_15
+  - first:
+      213: 5555958599401890146
+    second: TutoText_16
+  - first:
+      213: 5369064882418334951
+    second: TutoText_17
+  - first:
+      213: 6670533586937219311
+    second: TutoText_18
+  - first:
+      213: -6270366506959620614
+    second: TutoText_19
+  - first:
+      213: 608960087434596622
+    second: TutoText_20
+  - first:
+      213: 8034048499920255781
+    second: TutoText_21
+  - first:
+      213: -2435967455225520146
+    second: TutoText_22
+  - first:
+      213: -2303307495937497431
+    second: TutoText_23
+  - first:
+      213: 2131937474506803230
+    second: TutoText_24
+  - first:
+      213: 6006535891022222592
+    second: TutoText_25
+  - first:
+      213: 1051108646391879623
+    second: TutoText_26
+  - first:
+      213: 1991000485175377684
+    second: TutoText_27
+  - first:
+      213: 117236401788078047
+    second: TutoText_28
+  - first:
+      213: -9024727659786254789
+    second: TutoText_29
+  - first:
+      213: 5466359286876610082
+    second: TutoText_30
+  - first:
+      213: 8718117053394534268
+    second: TutoText_31
+  - first:
+      213: -8269098884332334212
+    second: TutoText_32
+  - first:
+      213: -7818629713354187317
+    second: TutoText_33
+  - first:
+      213: -1636208569489168704
+    second: TutoText_34
+  - first:
+      213: 267204350087065773
+    second: TutoText_35
+  - first:
+      213: 7026666480867679231
+    second: TutoText_36
+  - first:
+      213: 4695710244547767750
+    second: TutoText_37
+  - first:
+      213: 7282717682689197483
+    second: TutoText_38
+  - first:
+      213: -8867191488622763988
+    second: TutoText_39
+  - first:
+      213: 5835610188727928954
+    second: TutoText_40
+  - first:
+      213: -8505903758380325751
+    second: TutoText_41
+  - first:
+      213: 4588041522009268199
+    second: TutoText_42
+  - first:
+      213: 6939293237045811029
+    second: TutoText_43
+  - first:
+      213: 5800333071607912247
+    second: TutoText_44
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TutoText_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 172
+        width: 103
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 763e620dacbeecb30800000000000000
+      internalID: 4309641149748274023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutoText_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 138
+        width: 102
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c912e60526bff7a10800000000000000
+      internalID: 1909521166703141276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutoText_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 108
+        width: 104
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308f7a7f7a0683c90800000000000000
+      internalID: -7189890530566211581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutoText_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 76
+        width: 123
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d38ef819afceb75a0800000000000000
+      internalID: -6522359074387924931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutoText_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 46
+        width: 93
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26883064cc31adf70800000000000000
+      internalID: 9212697755808663650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
