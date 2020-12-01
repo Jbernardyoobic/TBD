@@ -74,9 +74,11 @@ public class MainMenu : MonoBehaviour {
         statsMenu.enabled = true;
         mainMenu.enabled = false;
         textStats.text = "";
+        textStats.richText = true;
         for (int index = 0; index < playerData.BestTimePerLevel.Length; index++) {
-            textStats.text += String.Format("Level {0} :\n Time {1:F3}s\n Collectibles {2}\n Secret Collectibles {3}\n",
-                                        index,
+            String textLevel = index == 0 ? "Tutorial" : "Level " + index;
+            textStats.text += String.Format("{0} : {1:F3}s\n        <sprite index=1> {2}\n        <sprite index=0> {3}\n\n",
+                                        textLevel,
                                         playerData.BestTimePerLevel[index],
                                         playerData.TotalCollectiblesPerLevel[index],
                                         playerData.SecretCollectiblesPerLevel[index]);
