@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
             RestartGame();
         } else if (playerSubmit && ui_deathScreen.enabled) {
             ui_deathScreen.enabled = false;
-            PreviousLevel();
+            RedoLevel();
         }
 
         if (Input.GetButtonDown("Pause")) {
@@ -84,16 +84,9 @@ public class GameManager : MonoBehaviour {
         ui_deathScreen.enabled = true;
     }
 
-    public void PreviousLevel() {
+    public void RedoLevel() {
         ShowTimerScreen();
-        int levelIndex = currentLevel - 1;
-        if (levelIndex < 0) {
-            GenerateLevel(0);
-        } else if (levelIndex == 0 || selectedLevelMode == "loop") {
-            GenerateLevel(currentLevel);
-        } else {
-            GenerateLevel(levelIndex);
-        }
+        GenerateLevel(currentLevel);
     }
 
 
